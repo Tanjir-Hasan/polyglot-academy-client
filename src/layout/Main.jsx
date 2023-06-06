@@ -22,7 +22,7 @@ const Main = () => {
     return (
         <div>
             <Navbar theme={theme} handleThemeSwitch={handleThemeSwitch}></Navbar>
-            <div className="pt-32">
+            <div >
                 <Outlet theme={theme}></Outlet>
             </div>
             <Footer theme={theme}></Footer>

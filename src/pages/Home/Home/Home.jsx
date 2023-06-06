@@ -1,4 +1,5 @@
 import Dummy from "../../dummy/Dummy";
+import Banner from "../Banner/Banner";
 
 
 
@@ -20,13 +21,8 @@ const Home = ({ theme }) => {
 
     return (
         <div>
-
-            {
-                theme === "dark" ?
-                    <h1>hello</h1>
-                    :
-                    ''
-            }
+            <Banner></Banner>
+            {/* <Dummy></Dummy> */}
         </div>
     );
 };
