@@ -12,10 +12,12 @@ const Footer = () => {
         `}>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div>
-                    <img src="logo.png" className="mr-5 h-20 rounded-full sm:h-9" alt="logo" />
-                    <p className="max-w-xs mt-4 text-sm">
-                        Be the one with us.
-                    </p>
+                    <div className='flex items-baseline'>
+                        <img src="logo.png" className="mr-5 h-20 rounded-full sm:h-9" alt="logo" />
+                        <p className="max-w-xs mt-4 text-sm">
+                            Be the one with us.
+                        </p>
+                    </div>
                     <div className='mt-8'>
                         <p className="font-medium">
                             Follow us on

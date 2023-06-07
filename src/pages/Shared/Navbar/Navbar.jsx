@@ -70,14 +70,14 @@ const Navbar = () => {
                         >
                             <img
                                 alt="avatar"
-                                src={user ? user?.photoURL : "https://i.ibb.co/qmh6CKP/user.png"}
+                                src={user ? user?.photoURL : "https://i.ibb.co/P5ycT8T/user-1.png"}
                                 className="h-10 w-10 rounded-full object-cover"
                             />
 
                             <p className="ms-2 hidden text-left text-xs md:block">
                                 <strong className="block font-medium">{user?.displayName}</strong>
 
-                                <span className="text-gray-500">{user?.email}</span>
+                                <span>{user?.email}</span>
                             </p>
 
                         </button>
