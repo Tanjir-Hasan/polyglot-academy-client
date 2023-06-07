@@ -10,7 +10,7 @@ import { ThemeProvider } from './providers/ThemeProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className='max-w-screen-2xl mx-auto'>
+    <div className=''>
       <AuthProviders>
         <ThemeProvider>
 
