@@ -8,36 +8,39 @@ import img6 from '../../../assets/images/text-format.png';
 import img7 from '../../../assets/images/vimeo.png';
 import img8 from '../../../assets/images/zoom (1).png';
 import img9 from '../../../assets/images/youtube.png';
+import img10 from '../../../assets/images/giphy.gif';
 
 const LessonTypes = () => {
     return (
-        <div className='space-y-10'>
+        <div className='my-20 space-y-10'>
 
             <div className='space-y-3'>
                 <h1 className='text-5xl text-center font-[Pacifico]'>LESSON TYPES</h1>
-                <p className='text-center md:px-28 px-6 font-[Inconsolata]'>Don’t stick to the one type of lesson. Take advantage of the options provided. We developed Masterstudy LMS with a well-defined approach in mind. And the main point of this was to make it diverse.</p>
+                <p className='text-xl text-center md:px-28 px-6 font-[Inconsolata]'>Don’t stick to the one type of lesson. Take advantage of the options provided. We developed Masterstudy LMS with a well-defined approach in mind. And the main point of this was to make it diverse.</p>
             </div>
 
             <div className='grid grid-cols-2 md:grid-cols-4 w-1/2 mx-auto gap-5'>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center gap-3'>
                     <img src={img5} className='w-16' alt="" />
                     <p>VIDEO</p>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center gap-3'>
                     <img src={img1} className='w-16' alt="" />
                     <p>SLIDES</p>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center gap-3'>
                     <img src={img6} className='w-16' alt="" />
                     <p>TEXT</p>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center gap-3'>
                     <img src={img3} className='w-16' alt="" />
                     <p>STREAMING</p>
                 </div>
             </div>
 
-            <div className='space-y-3'>
+            <img src={img10} className='w-8/12 h-[400px] mx-auto' alt="" />
+
+            <div className='space-y-6'>
                 <h1 className='text-5xl text-center font-[Pacifico]'>5 TYPES OF VIDEO LESSONS</h1>
                 <div>
                     <div className='lg:flex lg:justify-between w-1/4 lg:w-9/12 mx-auto gap-5'>

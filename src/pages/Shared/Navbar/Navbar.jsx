@@ -29,6 +29,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
+import { BsFillMoonFill, BsSun } from 'react-icons/bs';
 
 const Navbar = () => {
 
@@ -83,6 +84,9 @@ const Navbar = () => {
 
                     {/* <button onClick={handleThemeSwitch}>Toggle Color</button> */}
 
+                    <BsSun size={'1.5rem'} />
+                    {/* <BsFillMoonFill size={'1.5rem'} /> */}
+
                     <div
                         className="flex flex-1 items-center justify-between gap-8 sm:justify-end"
                     >
@@ -100,7 +104,7 @@ const Navbar = () => {
 
                             {
                                 user &&
-                                <Link>
+                                <Link to="/dashboard">
                                     <button>Dashboard</button>
                                 </Link>
                             }

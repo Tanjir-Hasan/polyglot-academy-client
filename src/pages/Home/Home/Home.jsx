@@ -1,6 +1,8 @@
 import Dummy from "../../dummy/Dummy";
 import Banner from "../Banner/Banner";
 import LessonTypes from "../LessonTypes/LessonTypes";
+import PopularClassesSection from "../PopularClassesSection/PopularClassesSection";
+import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
 
 
 
@@ -25,6 +27,8 @@ const Home = () => {
         <div>
             {/* <Banner></Banner> */}
             {/* <Dummy></Dummy> */}
+            <PopularClassesSection></PopularClassesSection>
+            <PopularInstructorsSection></PopularInstructorsSection>
             <LessonTypes></LessonTypes>
         </div>
     );
