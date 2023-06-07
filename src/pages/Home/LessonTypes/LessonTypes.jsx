@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img1 from '../../../assets/images/hand.png';
 import img2 from '../../../assets/images/link.png';
 import img3 from '../../../assets/images/live-streaming.png';
@@ -9,10 +9,14 @@ import img7 from '../../../assets/images/vimeo.png';
 import img8 from '../../../assets/images/zoom (1).png';
 import img9 from '../../../assets/images/youtube.png';
 import img10 from '../../../assets/images/giphy.gif';
+import { ThemeContext } from '../../../providers/ThemeProvider';
 
 const LessonTypes = () => {
+
+    const { theme } = useContext(ThemeContext);
+
     return (
-        <div className='my-20 space-y-10'>
+        <div className={`my-20 space-y-10 my-component ${theme === 'dark' ? 'dark' : ''}`}>
 
             <div className='space-y-3'>
                 <h1 className='text-5xl text-center font-[Pacifico]'>LESSON TYPES</h1>

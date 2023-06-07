@@ -30,10 +30,16 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { BsFillMoonFill, BsSun } from 'react-icons/bs';
+import { useState } from 'react';
+import { ThemeContext } from '../../../providers/ThemeProvider';
 
 const Navbar = () => {
 
-    const { theme, handleThemeSwitch } = useContext(AuthContext)
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
+    const handleThemeToggle = () => {
+        toggleTheme();
+    };
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -44,9 +50,9 @@ const Navbar = () => {
                 console.log(error);
             })
     }
-
+    //  bg-gradient-to-b from-gray-500 via-white to-white
     return (
-        <div className={`bg-gray-50 lg:fixed z-10 w-full bg-${theme === 'dark' ? 'gray-800' : 'gray-200'}`}>
+        <div className={` lg:fixed z-10 w-full my-component ${theme === 'dark' ? 'dark' : 'bg-gradient-to-b from-gray-500 via-white to-white'}`}>
             {/*    className={`bg-${theme === 'dark' ? 'gray-800' : 'gray-200'}`} */}
             <div className=" px-4 py-8 sm:px-6 lg:px-8">
                 <div className="flex items-center sm:justify-between sm:gap-4">
@@ -82,10 +88,12 @@ const Navbar = () => {
                         </button>
                     </div> */}
 
-                    {/* <button onClick={handleThemeSwitch}>Toggle Color</button> */}
+                    <button onClick={handleThemeToggle}>
+                        {theme === 'light' ? <BsFillMoonFill size={'1.5rem'} /> : <BsSun size={'1.5rem'} />}
+                    </button>
 
-                    <BsSun size={'1.5rem'} />
-                    {/* <BsFillMoonFill size={'1.5rem'} /> */}
+                    {/*  */}
+                    {/*  */}
 
                     <div
                         className="flex flex-1 items-center justify-between gap-8 sm:justify-end"
@@ -140,9 +148,9 @@ const Navbar = () => {
                 </div>
 
                 <div className="mt-8 flex justify-between items-center">
-                    <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+                    <Link to="/" className="text-2xl font-bold text-gray-900 sm:text-3xl">
                         Summer Camp
-                    </h1>
+                    </Link>
                     <h2 className='md:hidden sm:block'>
                         <span className='text-xl font-medium'>Welcome back,</span>
                         <br />

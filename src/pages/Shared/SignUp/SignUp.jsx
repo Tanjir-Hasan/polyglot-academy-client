@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
@@ -9,6 +9,8 @@ import { AuthContext } from '../../../providers/AuthProviders';
 const SignUp = () => {
 
     const { createUser, userUpdate } = useContext(AuthContext);
+
+    const [errorSing, setErrorSing] = useState('');
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -22,16 +24,23 @@ const SignUp = () => {
 
         console.log(data)
 
+        if (data.password !== data.confirm) {
+            setErrorSing('Passwords do not match');
+            return;
+        }
+
         createUser(data.email, data.password)
             .then(result => {
                 const createUser = result.user;
                 userUpdate(data.name, data.photoURL);
-                // createUser.displayName = name;
-                // createUser.photoURL = photoUrl;
+                createUser.displayName = data.name;
+                createUser.photoURL = data.photoURL;
+                setErrorSing('')
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message);
+                setErrorSing(error.message);
             })
 
     };
@@ -40,45 +49,46 @@ const SignUp = () => {
         <div className='flex items-center justify-center gap-10 mx-auto'>
             <div className='w-1/2'>
                 <h3 className='text-4xl text-center font-semibold mb-4'>Register</h3>
+                {errorSing && <p className='text-center font-bold text-red-600'>{errorSing}</p>}
                 <div className='border-2 p-10'>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" >
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Full Name</span>
+                                {errors.name && <span className="font-extrabold text-red-600 ml-2">*required</span>}
                             </label>
 
-                            {errors.name && <span className="text-red-600 ml-2">*required</span>}
 
                             <input type="text" name='name' {...register("name", { required: true })} placeholder="Email" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
                         </div>
 
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Email</span>
+                                {errors.email && <span className="font-extrabold text-red-600 ml-2">*required</span>}
                             </label>
 
-                            {errors.email && <span className="text-red-600 ml-2">*required</span>}
 
                             <input type="email" name='email' {...register("email", { required: true })} placeholder="Email" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
                         </div>
 
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Photo URL</span>
+                                {errors.photoURL && <span className="font-extrabold text-red-600 ml-2">*required</span>}
                             </label>
 
-                            {errors.photoURL && <span className="text-red-600 ml-2">*required</span>}
 
                             <input type="text" name='photoURL' {...register("photoURL", { required: true })} placeholder="Email" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
                         </div>
 
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Password</span>
+                                {errors.password && <span className="font-extrabold text-red-600 ml-2">*required</span>}
                             </label>
 
-                            {errors.password && <span className="text-red-600 ml-2">*required</span>}
 
                             <input type="password" name='password' {...register("password", {
                                 required: true,
@@ -87,21 +97,21 @@ const SignUp = () => {
                             })}
                                 placeholder="Password" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
 
-                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase and one special character.</p>}
+                            {errors.password?.type === 'minLength' && <p className="font-extrabold text-red-600">Password must be 6 characters</p>}
+                            {errors.password?.type === 'pattern' && <p className="font-extrabold text-red-600">Password must have one Uppercase and one special character.</p>}
 
                         </div>
 
-                        {/* <div className="space-y-4">
-                            <label>
+                        <div className="space-y-4">
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Confirm Password</span>
+                                {errors.confirm && <span className="font-extrabold text-red-600 ml-2">*required</span>}
                             </label>
 
-                            {errors.confirm && <span className="text-red-600 ml-2">*required</span>}
 
                             <input type="password" name='confirm' {...register("confirm", { required: true })} placeholder="Confirm Password" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
 
-                        </div> */}
+                        </div>
 
                         <div className=" mt-6">
                             <input disabled={false} className="px-4 py-3 rounded-full bg-gray-300 text-black focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" type="submit" value="Create an account" />

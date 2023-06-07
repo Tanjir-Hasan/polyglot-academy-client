@@ -16,6 +16,8 @@ const Login = () => {
 
     const { signUser } = useContext(AuthContext);
 
+    const [errorLogin, setErrorLogin] = useState('');
+
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -26,12 +28,13 @@ const Login = () => {
         signUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
+                setErrorLogin('')
                 navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message);
+                setErrorLogin(error.message);
             })
-        console.log(data)
     };
 
 
@@ -42,25 +45,26 @@ const Login = () => {
 
             <div className='lg:w-1/3'>
                 <h3 className='text-4xl text-center font-semibold mb-4'>Login</h3>
+                {errorLogin && <p className='text-center font-bold text-red-600'>{errorLogin}</p>}
                 <div className='w-full border-2 p-10'>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" >
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Email</span>
+                                {errors.email && <span className="font-extrabold text-red-600 ml-2">is required</span>}
                             </label>
 
-                            {errors.email && <span className="text-red-600 ml-2">is required</span>}
 
                             <input type="email" name='email' {...register("email", { required: true })} placeholder="Email" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
                         </div>
 
                         <div className="space-y-4">
-                            <label>
+                            <label className='flex items-center'>
                                 <span className="text-xl font-medium">Password</span>
+                                {errors.password && <span className="font-extrabold text-red-600 ml-2">is required</span>}
                             </label>
 
-                            {errors.password && <span className="text-red-600 ml-2">is required</span>}
 
                             <div className="relative">
 
