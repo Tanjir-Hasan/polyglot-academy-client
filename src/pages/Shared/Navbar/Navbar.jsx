@@ -26,15 +26,30 @@
 
 // export default Navbar;
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const Navbar = () => {
+
+    const { theme, handleThemeSwitch } = useContext(AuthContext)
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
-        <nav aria-label="Page Header" className="bg-gray-50 ">
+        <div className={`bg-gray-50 lg:fixed z-10 w-full bg-${theme === 'dark' ? 'gray-800' : 'gray-200'}`}>
+            {/*    className={`bg-${theme === 'dark' ? 'gray-800' : 'gray-200'}`} */}
             <div className=" px-4 py-8 sm:px-6 lg:px-8">
                 <div className="flex items-center sm:justify-between sm:gap-4">
-                    <div className="relative hidden sm:block">
+                    {/* <div className="relative hidden sm:block">
                         <label className="sr-only" htmlFor="search"> Search </label>
 
                         <input
@@ -64,15 +79,17 @@ const Navbar = () => {
                                 />
                             </svg>
                         </button>
-                    </div>
+                    </div> */}
+
+                    {/* <button onClick={handleThemeSwitch}>Toggle Color</button> */}
 
                     <div
                         className="flex flex-1 items-center justify-between gap-8 sm:justify-end"
                     >
-                        <div className="flex gap-4">
+                        <div className="flex lg:gap-4 gap-2">
 
                             <Link>
-                                <button>Home</button>
+                                <button className='hidden md:block'>Home</button>
                             </Link>
                             <Link>
                                 <button>Instructors</button>
@@ -81,9 +98,21 @@ const Navbar = () => {
                                 <button>Classes</button>
                             </Link>
 
-                            <Link>
-                                <button>Dashboard</button>
-                            </Link>
+                            {
+                                user &&
+                                <Link>
+                                    <button>Dashboard</button>
+                                </Link>
+                            }
+
+                            {
+                                user ?
+                                    <button onClick={handleLogOut}>Logout</button>
+                                    :
+                                    (<Link to="/login">
+                                        <button>Login</button>
+                                    </Link>)
+                            }
                         </div>
 
                         <button
@@ -92,14 +121,14 @@ const Navbar = () => {
                         >
                             <img
                                 alt="avatar"
-                                src="https://i.ibb.co/qmh6CKP/user.png"
+                                src={user ? user?.photoURL : "https://i.ibb.co/qmh6CKP/user.png"}
                                 className="h-10 w-10 rounded-full object-cover"
                             />
 
                             <p className="ms-2 hidden text-left text-xs md:block">
-                                <strong className="block font-medium">Eric Frusciante</strong>
+                                <strong className="block font-medium">{user?.displayName}</strong>
 
-                                <span className="text-gray-500"> eric@frusciante.com </span>
+                                <span className="text-gray-500">{user?.email}</span>
                             </p>
 
                         </button>
@@ -113,11 +142,11 @@ const Navbar = () => {
                     <h2 className='md:hidden sm:block'>
                         <span className='text-xl font-medium'>Welcome back,</span>
                         <br />
-                        <span className='font-thin'>Eric Frusciante</span>
+                        <span className='font-thin'>{user?.displayName}</span>
                     </h2>
                 </div>
             </div>
-        </nav>
+        </div>
     );
 };
 

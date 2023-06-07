@@ -1,10 +1,12 @@
 import Dummy from "../../dummy/Dummy";
 import Banner from "../Banner/Banner";
+import LessonTypes from "../LessonTypes/LessonTypes";
 
 
 
-const Home = ({ theme }) => {
+const Home = () => {
 
+    // const {}
     // const [theme, setTheme] = useState('light');
 
     // useEffect(() => {
@@ -21,8 +23,9 @@ const Home = ({ theme }) => {
 
     return (
         <div>
-            <Banner></Banner>
+            {/* <Banner></Banner> */}
             {/* <Dummy></Dummy> */}
+            <LessonTypes></LessonTypes>
         </div>
     );
 };
