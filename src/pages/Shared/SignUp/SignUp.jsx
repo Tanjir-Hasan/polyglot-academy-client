@@ -5,14 +5,15 @@ import { useForm } from 'react-hook-form';
 import Lottie from "lottie-react";
 import animation from "../../../../public/137860-fill-a-form-icon.json";
 import { AuthContext } from '../../../providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
 
     const { createUser, userUpdate } = useContext(AuthContext);
 
-    const [errorSing, setErrorSing] = useState('');
+    const [errorSign, setErrorSign] = useState('');
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const SignUp = () => {
         console.log(data)
 
         if (data.password !== data.confirm) {
-            setErrorSing('Passwords do not match');
+            setErrorSign('Passwords do not match');
             return;
         }
 
@@ -35,13 +36,42 @@ const SignUp = () => {
                 userUpdate(data.name, data.photoURL);
                 createUser.displayName = data.name;
                 createUser.photoURL = data.photoURL;
-                setErrorSing('')
-                navigate(from, { replace: true })
             })
-            .catch(error => {
-                console.log(error.message);
-                setErrorSing(error.message);
+            .then(() => {
+                const savedUser = { name: data.name, email: data.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            reset();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'User created successfully.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            setErrorSign('');
+                            navigate(from, { replace: true });
+                        }
+                    })
+                    .catch(error => console.log(error));
             })
+            .catch(error => console.log(error));
+
+        // setErrorSign('');
+        // navigate(from, { replace: true });
+
+        // .catch(error => {
+        //     console.log(error.message);
+        //     setErrorSign(error.message);
+        // })
 
     };
 
@@ -49,7 +79,7 @@ const SignUp = () => {
         <div className='flex items-center justify-center gap-10 mx-auto'>
             <div className='w-1/2'>
                 <h3 className='text-4xl text-center font-semibold mb-4'>Register</h3>
-                {errorSing && <p className='text-center font-bold text-red-600'>{errorSing}</p>}
+                {errorSign && <p className='text-center font-bold text-red-600'>{errorSign}</p>}
                 <div className='border-2 p-10'>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" >
@@ -60,7 +90,7 @@ const SignUp = () => {
                             </label>
 
 
-                            <input type="text" name='name' {...register("name", { required: true })} placeholder="Email" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
+                            <input type="text" name='name' {...register("name", { required: true })} placeholder="Full Name" className="block w-full px-5 py-3 border rounded-lg bg-white shadow-lg placeholder-black text-gray-700 focus:ring focus:outline-none" />
                         </div>
 
                         <div className="space-y-4">

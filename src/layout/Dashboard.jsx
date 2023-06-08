@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { MdManageSearch, MdManageAccounts } from 'react-icons/md';
 import { HiViewGridAdd } from 'react-icons/hi';
 import { FaStickyNote } from 'react-icons/fa';
@@ -29,6 +29,7 @@ const Dashboard = () => {
                         <ul className="menu menu-horizontal">
                             <li><Link to="/">Manage Users</Link></li>
                             <li><Link to="/">Manage Classes</Link></li>
+                            <li><Link to="/dashboard/all-users">All Users</Link></li>
                         </ul>
 
                         {/* instructor */}
@@ -46,7 +47,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 {/* Page content here */}
-                Content
+                <Outlet></Outlet>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>

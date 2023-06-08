@@ -6,6 +6,7 @@ import Login from "../pages/Shared/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import Dummy from "../pages/dummy/Dummy";
 import PrivateRoutes from "./PrivateRoutes";
+import AllUsers from "../pages/Shared/Dashboard/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
-                path:  "dummy",
+                path: "dummy",
                 element: <PrivateRoutes><Dummy></Dummy></PrivateRoutes>
             }
         ]
@@ -34,10 +35,13 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard></Dashboard>,
         children: [
-            
+            {
+                path: "all-users",
+                element: <AllUsers></AllUsers>
+            }
         ]
     }
-    
+
 ]);
 
 export default router;
