@@ -13,8 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <div className=''>
       <AuthProviders>
         <ThemeProvider>
-
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
         </ThemeProvider>
       </AuthProviders>
     </div>

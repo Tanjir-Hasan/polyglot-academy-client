@@ -8,7 +8,7 @@ const Main = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="lg:pt-48">
+            <div className="lg:pt-[172px]">
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "../provider/AuthProvider";
+import { AuthContext } from "../providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
-import { DotLoader } from "react-spinners";
 
 const PrivateRoutes = ({ children }) => {
 
@@ -10,9 +9,7 @@ const PrivateRoutes = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <div>
-            <DotLoader color="#36d7b7" />
-        </div>
+        return <div>Loading</div>
     };
 
     if (user) {

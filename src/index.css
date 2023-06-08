@@ -5,13 +5,20 @@
 .thumbs-wrapper {
     display: flex;
     justify-content: center;
+    background-color: #252422;
+    padding: 20px;
+    margin: 0;
+}
+
+
+.control-dots {
+    display: none;
 }
 
 .dark {
     background-color: #252422;
     color: #fff;
 }
-
 
 
 /**
