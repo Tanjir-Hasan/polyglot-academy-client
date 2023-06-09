@@ -8,11 +8,24 @@ const PopularClassesSection = () => {
 
     const [allData, setAllData] = useState([]);
 
+    const [displayCount, setDisplayCount] = useState(6);
+    const [showAll, setShowAll] = useState(false);
+
     useEffect(() => {
         fetch('http://localhost:5000/allData')
             .then(res => res.json())
             .then(data => setAllData(data))
-    }, [])
+    }, []);
+
+    const handleShowMore = () => {
+        setShowAll(true);
+        setDisplayCount(allData.length);
+    };
+
+    const handleShowLess = () => {
+        setShowAll(false);
+        setDisplayCount(6);
+    };
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
@@ -23,10 +36,21 @@ const PopularClassesSection = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-20 pb-10'>
 
                     {
-                        allData.map(data => <Card key={data._id} data={data}></Card>)
+                        allData.slice(0, displayCount).map(data => <Card key={data._id} data={data}></Card>)
                     }
 
                 </div>
+
+                <div className='flex justify-center pb-10'>
+                    {!showAll && (
+                        <button className='btn btn-outline' onClick={handleShowMore}>Show More</button>
+                    )}
+                    {showAll && (
+                        <button className='btn btn-outline' onClick={handleShowLess}>Show Less</button>
+                    )}
+                </div>
+
+
             </div>
         </div>
     );

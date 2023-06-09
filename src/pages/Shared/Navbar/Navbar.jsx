@@ -46,10 +46,10 @@ const Navbar = () => {
                             <Link>
                                 <button className='hidden md:block'>Home</button>
                             </Link>
-                            <Link>
+                            <Link to="/instructors">
                                 <button>Instructors</button>
                             </Link>
-                            <Link>
+                            <Link to="/classes">
                                 <button>Classes</button>
                             </Link>
 

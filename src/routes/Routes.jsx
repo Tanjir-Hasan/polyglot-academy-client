@@ -16,6 +16,8 @@ import MySelectedClasses from "../pages/Shared/Dashboard/MySelectedClasses";
 import MyEnrolledClasses from "../pages/Shared/Dashboard/MyEnrolledClasses";
 import PaymentHistory from "../pages/Shared/Dashboard/PaymentHistory";
 import AdminHome from "../pages/Dashboard/AdminHome";
+import Classes from "../pages/Shared/Classes/Classes";
+import Instructors from "../pages/Shared/Instructors/Instructors";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,15 @@ const router = createBrowserRouter([
             {
                 path: "sign-up",
                 element: <SignUp></SignUp>
+            },
+            {
+                path: "classes",
+                // element: <Classes></Classes>
+                element: <PrivateRoutes><Classes></Classes></PrivateRoutes>
+            },
+            {
+                path: "instructors",
+                element: <PrivateRoutes><Instructors></Instructors></PrivateRoutes>
             }
         ]
     },
