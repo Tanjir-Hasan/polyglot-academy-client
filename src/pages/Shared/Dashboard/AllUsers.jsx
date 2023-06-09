@@ -1,21 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
 
-    // const { data: users = [], refetch } = useQuery(['users'], async () => {
-    //     const res = await fetch('http://localhost:5000/users', {
-    //         headers: {
-    //             Authorization: `Bearer ${data.token}` 
-    //         }
-    //     });
-    //     const data = await res.json();
-    //     return data;
-    // });
-
     const [axiosSecure] = useAxiosSecure();
+    const [buttonDisabled, setButtonDisabled] = useState(false); 
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await axiosSecure.get('users')
@@ -38,7 +29,8 @@ const AllUsers = () => {
                         title: `${user.name} is Admin now`,
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    setButtonDisabled(true);
                 }
             })
     };
@@ -59,7 +51,8 @@ const AllUsers = () => {
                         title: `${user.name} is Instructor now`,
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    setButtonDisabled(true);
                 }
             })
     };
@@ -116,7 +109,8 @@ const AllUsers = () => {
                                                     :
                                                     <button
                                                         onClick={() => handleMakeAdmin(user)}
-                                                        className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                                                        disabled={user.role === 'instructor' || buttonDisabled}
+                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 ${user.role === 'instructor' || buttonDisabled ? 'opacity-60' : ''}`}
                                                         href="/download"
                                                     >
                                                         <span className="absolute -end-full transition-all group-hover:end-4">
@@ -152,8 +146,8 @@ const AllUsers = () => {
                                                     :
                                                     <button
                                                         onClick={() => handleMakeInstructor(user)}
-                                                        className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                                                        href="/download"
+                                                        disabled={user.role === 'admin' || buttonDisabled}
+                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 ${user.role === 'admin' || buttonDisabled ? 'opacity-60' : ''}`}
                                                     >
                                                         <span className="absolute -end-full transition-all group-hover:end-4">
                                                             <svg

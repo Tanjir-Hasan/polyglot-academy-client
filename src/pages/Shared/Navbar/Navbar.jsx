@@ -95,7 +95,7 @@ const Navbar = () => {
                         Polyglot Academy
                     </Link>
                     <h2 className='md:hidden sm:block'>
-                        <span className='text-xl font-medium'>Welcome back,</span>
+                        <span className='text-xl font-medium md:hidden sm:block'>Welcome back,</span>
                         <br />
                         <span className='font-thin'>{user?.displayName}</span>
                     </h2>
