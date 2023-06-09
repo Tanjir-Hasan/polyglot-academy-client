@@ -29,9 +29,15 @@ const Navbar = () => {
                 <div className="flex items-center sm:justify-between sm:gap-4">
 
                     <button onClick={handleThemeToggle}>
-                        {theme === 'light' ? <img src="https://i.ibb.co/Z2V6thq/n8vi-W0-X2-OYKw-1.gif" alt="" className='rounded-full' /> : <img src="https://i.ibb.co/W3BHx1F/ah6gf-FBf-IBK4.gif" alt="" className='rounded-full' />}
+                        {theme === 'light' ? <BsFillMoonFill className='animate-bounce hover:animate-none' size={"1.5rem"} /> : <BsSun className='animate-spin hover:animate-none' size={"2rem"} />}
                     </button>
+                    {/* <button onClick={handleThemeToggle}>
+                        {theme === 'light' ? <img src="https://i.ibb.co/Z2V6thq/n8vi-W0-X2-OYKw-1.gif" alt="" className='rounded-full' /> : <img src="https://i.ibb.co/W3BHx1F/ah6gf-FBf-IBK4.gif" alt="" className='rounded-full' />}
+                    </button> */}
                     
+                    
+                    
+
                     <div
                         className="flex flex-1 items-center justify-between gap-8 sm:justify-end"
                     >

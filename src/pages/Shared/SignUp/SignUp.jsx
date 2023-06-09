@@ -38,6 +38,7 @@ const SignUp = () => {
                 createUser.photoURL = data.photoURL;
             })
             .then(() => {
+                // save the user in the database
                 const savedUser = { name: data.name, email: data.email }
                 fetch('http://localhost:5000/users', {
                     method: 'POST',

@@ -17,12 +17,20 @@ const SocialLogin = () => {
     const handleGoogle = () => {
         signInWithPopup(auth, googleAuthProvider)
             .then(result => {
-                const googleUser = result.user;
-                console.log(googleUser)
-                navigate(from, { replace: true });
-            })
-            .catch(error => {
-                console.log(error.message)
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                const savedUser = { name: loggedUser.displayName, email: loggedUser.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
             })
     }
 

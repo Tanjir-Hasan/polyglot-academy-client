@@ -6,9 +6,13 @@ import { FaStickyNote } from 'react-icons/fa';
 import { GrCheckboxSelected } from 'react-icons/gr';
 import { BsCashCoin } from 'react-icons/bs';
 import { BiSelection } from 'react-icons/bi';
+import { useAdmin } from '../hooks/useAdmin';
 
 
 const Dashboard = () => {
+
+    const [isAdmin] = useAdmin();
+
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -26,24 +30,35 @@ const Dashboard = () => {
                     <div className="flex-none hidden lg:block">
 
                         {/* admin */}
-                        <ul className="menu menu-horizontal">
-                            <li><Link to="/">Manage Users</Link></li>
-                            <li><Link to="/">Manage Classes</Link></li>
-                            <li><Link to="/dashboard/all-users">All Users</Link></li>
-                        </ul>
+
+                        {
+                            isAdmin ?
+                            // admin
+                                <ul className="menu menu-horizontal">
+                                    <li><Link to="/">Manage Users</Link></li>
+                                    <li><Link to="/">Manage Classes</Link></li>
+                                    <li><Link to="/dashboard/all-users">All Users</Link></li>
+                                </ul>
+                                :
+                                // instructor
+                                <ul className="menu menu-horizontal">
+                                    <li><Link to="/">Add a Class</Link></li>
+                                    <li><Link to="/">My classes</Link></li>
+                                </ul>
+                        }
 
                         {/* instructor */}
-                        <ul className="menu menu-horizontal">
+                        {/* <ul className="menu menu-horizontal">
                             <li><Link to="/">Add a Class</Link></li>
                             <li><Link to="/">My classes</Link></li>
-                        </ul>
+                        </ul> */}
 
                         {/* student */}
-                        <ul className="menu menu-horizontal">
+                        {/* <ul className="menu menu-horizontal">
                             <li><Link to="/">My Selected Classes</Link></li>
                             <li><Link to="/">My Enrolled Classes</Link></li>
                             <li><Link to="/">Payment History</Link></li>
-                        </ul>
+                        </ul> */}
                     </div>
                 </div>
                 {/* Page content here */}

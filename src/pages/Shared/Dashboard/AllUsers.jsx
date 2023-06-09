@@ -1,16 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AllUsers = () => {
 
-    const [users, setData] = useState([]);
+    // const { data: users = [], refetch } = useQuery(['users'], async () => {
+    //     const res = await fetch('http://localhost:5000/users', {
+    //         headers: {
+    //             Authorization: `Bearer ${data.token}` 
+    //         }
+    //     });
+    //     const data = await res.json();
+    //     return data;
+    // });
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
+    const [axiosSecure] = useAxiosSecure();
+
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await axiosSecure.get('users')
+        return res.data;
+    });
+
+    // make admin
+    const handleMakeAdmin = user => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
             .then(res => res.json())
             .then(data => {
-                setData(data)
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is Admin now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             })
-    }, [])
+    };
+
+    // make instructor
+    const handleMakeInstructor = user => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is Instructor now`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    };
+
+
 
     return (
         <div>
@@ -44,7 +98,7 @@ const AllUsers = () => {
                             {
                                 users.map((user, index) =>
                                     <tr className='' key={user._id}>
-                                        <th className='text-xl text-center py-2'>{index + 1}</th>
+                                        <th className='text-xl font-normal text-center py-2'>{index + 1}</th>
                                         <td className='text-xl text-center'>
                                             <div className='flex flex-col'>
                                                 {user.name}
@@ -52,59 +106,77 @@ const AllUsers = () => {
                                             </div>
                                         </td>
                                         <td className='text-xl font-thin text-center hidden sm:block'>{user.email}</td>
-                                        <td className='text-xl text-center'>
-                                            <button
-                                                className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                                                href="/download"
-                                            >
-                                                <span className="absolute -end-full transition-all group-hover:end-4">
-                                                    <svg
-                                                        className="h-5 w-5 rtl:rotate-180"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke="currentColor"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth="2"
-                                                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                        />
-                                                    </svg>
-                                                </span>
 
-                                                <span className="text-sm font-medium transition-all group-hover:me-4">
-                                                    Make Admin
-                                                </span>
-                                            </button>
+                                        {/* admin */}
+
+                                        <td className='text-xl text-center'>
+                                            {
+                                                user.role === 'admin' ?
+                                                    'Admin'
+                                                    :
+                                                    <button
+                                                        onClick={() => handleMakeAdmin(user)}
+                                                        className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                                                        href="/download"
+                                                    >
+                                                        <span className="absolute -end-full transition-all group-hover:end-4">
+                                                            <svg
+                                                                className="h-5 w-5 rtl:rotate-180"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke="currentColor"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth="2"
+                                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                                                />
+                                                            </svg>
+                                                        </span>
+
+                                                        <span className="text-sm font-medium transition-all group-hover:me-4">
+                                                            Make Admin
+                                                        </span>
+                                                    </button>
+                                            }
                                         </td>
-                                        <td className='text-xl text-center'>
-                                            <button
-                                                className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                                                href="/download"
-                                            >
-                                                <span className="absolute -end-full transition-all group-hover:end-4">
-                                                    <svg
-                                                        className="h-5 w-5 rtl:rotate-180"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                        stroke="currentColor"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth="2"
-                                                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                                        />
-                                                    </svg>
-                                                </span>
 
-                                                <span className="text-sm font-medium transition-all group-hover:me-4">
-                                                    Make Instructor
-                                                </span>
-                                            </button>
+                                        {/* instructor */}
+
+                                        <td className='text-xl text-center'>
+                                            {
+                                                user.role === 'instructor' ?
+                                                    'Instructor'
+                                                    :
+                                                    <button
+                                                        onClick={() => handleMakeInstructor(user)}
+                                                        className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                                                        href="/download"
+                                                    >
+                                                        <span className="absolute -end-full transition-all group-hover:end-4">
+                                                            <svg
+                                                                className="h-5 w-5 rtl:rotate-180"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                stroke="currentColor"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth="2"
+                                                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                                                />
+                                                            </svg>
+                                                        </span>
+
+                                                        <span className="text-sm font-medium transition-all group-hover:me-4">
+                                                            Make Instructor
+                                                        </span>
+                                                    </button>
+                                            }
                                         </td>
                                     </tr>
                                 )

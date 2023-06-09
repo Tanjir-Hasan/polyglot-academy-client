@@ -4,9 +4,9 @@ import Home from "../pages/Home/Home/Home";
 import SignUp from "../pages/Shared/SignUp/SignUp";
 import Login from "../pages/Shared/Login/Login";
 import Dashboard from "../layout/Dashboard";
-import Dummy from "../pages/dummy/Dummy";
-import PrivateRoutes from "./PrivateRoutes";
 import AllUsers from "../pages/Shared/Dashboard/AllUsers";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -24,20 +24,17 @@ const router = createBrowserRouter([
             {
                 path: "sign-up",
                 element: <SignUp></SignUp>
-            },
-            {
-                path: "dummy",
-                element: <PrivateRoutes><Dummy></Dummy></PrivateRoutes>
             }
         ]
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             {
                 path: "all-users",
-                element: <AllUsers></AllUsers>
+                // element: <AllUsers></AllUsers>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             }
         ]
     }
