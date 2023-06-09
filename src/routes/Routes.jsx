@@ -7,6 +7,15 @@ import Dashboard from "../layout/Dashboard";
 import AllUsers from "../pages/Shared/Dashboard/AllUsers";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
+import MyClasses from "../pages/Shared/Dashboard/MyClasses";
+import AddAClass from "../pages/Shared/Dashboard/AddAClass";
+import InstructorRoute from "./InstructorRoute";
+import ManageClasses from "../pages/Shared/Dashboard/ManageClasses";
+import MyClass from "../pages/Shared/Dashboard/MyClass";
+import MySelectedClasses from "../pages/Shared/Dashboard/MySelectedClasses";
+import MyEnrolledClasses from "../pages/Shared/Dashboard/MyEnrolledClasses";
+import PaymentHistory from "../pages/Shared/Dashboard/PaymentHistory";
+import AdminHome from "../pages/Dashboard/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -31,11 +40,41 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
+            // admin routes
+            {
+                path: "admin-home",
+                element: <AdminRoute><AdminHome></AdminHome> </AdminRoute>
+            },
             {
                 path: "all-users",
-                // element: <AllUsers></AllUsers>
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-            }
+            },
+            {
+                path: "manage-classes",
+                element: <AdminRoute><ManageClasses></ManageClasses> </AdminRoute>
+            },
+            // instructor routes
+            {
+                path: "add-class",
+                element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
+            },
+            {
+                path: "my-class",
+                element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
+            },
+            // student routes
+            {
+                path: "my-selected-classes",
+                element: <MySelectedClasses></MySelectedClasses>
+            },
+            {
+                path: "my-enrolled-classes",
+                element: <MyEnrolledClasses></MyEnrolledClasses>
+            },
+            {
+                path: "payment-history",
+                element: <PaymentHistory></PaymentHistory>
+            },
         ]
     }
 

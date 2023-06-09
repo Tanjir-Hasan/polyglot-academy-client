@@ -7,11 +7,13 @@ import { GrCheckboxSelected } from 'react-icons/gr';
 import { BsCashCoin } from 'react-icons/bs';
 import { BiSelection } from 'react-icons/bi';
 import { useAdmin } from '../hooks/useAdmin';
+import { useInstructor } from '../hooks/useInstructor';
 
 
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     return (
         <div className="drawer">
@@ -31,9 +33,9 @@ const Dashboard = () => {
 
                         {/* admin */}
 
-                        {
+                        {/* {
                             isAdmin ?
-                            // admin
+                                // admin
                                 <ul className="menu menu-horizontal">
                                     <li><Link to="/">Manage Users</Link></li>
                                     <li><Link to="/">Manage Classes</Link></li>
@@ -42,10 +44,10 @@ const Dashboard = () => {
                                 :
                                 // instructor
                                 <ul className="menu menu-horizontal">
-                                    <li><Link to="/">Add a Class</Link></li>
-                                    <li><Link to="/">My classes</Link></li>
+                                    <li><Link to="/add-class">Add a Class</Link></li>
+                                    <li><Link to="/my-class">My classes</Link></li>
                                 </ul>
-                        }
+                        } */}
 
                         {/* instructor */}
                         {/* <ul className="menu menu-horizontal">
@@ -59,9 +61,33 @@ const Dashboard = () => {
                             <li><Link to="/">My Enrolled Classes</Link></li>
                             <li><Link to="/">Payment History</Link></li>
                         </ul> */}
+
+                        {
+                            isAdmin &&
+                            <ul className="menu menu-horizontal">
+                                <li><Link to="/dashboard/admin-home">Admin home</Link></li>
+                                <li><Link to="/dashboard/manage-classes">Manage Classes</Link></li>
+                                <li><Link to="/dashboard/all-users">All Users</Link></li>
+                            </ul>
+                            ||
+                            isInstructor &&
+                            <ul className="menu menu-horizontal">
+                                <li><Link to="/dashboard/add-class">Instructor Home</Link></li>
+                                <li><Link to="/dashboard/add-class">Add a Class</Link></li>
+                                <li><Link to="/dashboard/my-class">My classes</Link></li>
+                            </ul>
+                            ||
+                            <ul className="menu menu-horizontal">
+                                <li><Link to="/dashboard/my-selected-classes">My Selected Classes</Link></li>
+                                <li><Link to="/dashboard/my-enrolled-classes">My Enrolled Classes</Link></li>
+                                <li><Link to="/dashboard/payment-history">Payment History</Link></li>
+                            </ul>
+                        }
+
                     </div>
                 </div>
                 {/* Page content here */}
+                <h1></h1>
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">
