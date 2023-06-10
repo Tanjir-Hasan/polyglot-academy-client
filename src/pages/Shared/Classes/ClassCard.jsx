@@ -1,17 +1,12 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from '../../../providers/ThemeProvider';
+import React from 'react';
 
 const ClassCard = ({ data }) => {
 
-    const { theme } = useContext(ThemeContext);
-
-    // console.log(users)
-
     const { language, image, availableSeats, name } = data;
-
+    const isAvailable = availableSeats > 0;
 
     return (
-        <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
+        <div className={`${isAvailable ? '' : 'bg-red-400'} mt-5 py-10 w-1/2 mx-auto rounded-xl`}>
             <h1 className='text-3xl text-center font-[Inconsolata]'>{language}</h1>
             <div className="">
                 <div className="relative mt-3 flex flex-wrap mx-auto justify-center">
@@ -22,22 +17,18 @@ const ClassCard = ({ data }) => {
                                 className="object-cover w-full h-full scale-100 group-hover:scale-110 transition-all duration-400"
                                 alt=""
                             />
-                            <div className="absolute border-4 border-primary w-[95%] h-[95%] invisible group-hover:visible opacity-0 group-hover:opacity-100 group-hover:scale-90 transition-all duration-500"></div>
+                            <div className="absolute border-4 border-[#ef476f]  w-[95%] h-[95%] invisible group-hover:visible opacity-0 group-hover:opacity-100 group-hover:scale-90 transition-all duration-500"></div>
                         </div>
                         <p className="mb-4 text-lg text-center">
                             By, {name}.
                         </p>
                         <div className="flex justify-between items-center gap-x-3">
-                            <p>Available Seat: {availableSeats}</p>
+                            <p className='text-lg font-semibold'>Available Seat: {availableSeats}</p>
 
-{/* {
-    availableSeats.length === 0 && <button className="btn btn-outline ">Get this Course</button> || <button className="btn btn-primary">Get this Course</button>
-} */}
-                            <button className="btn btn-outline">Get this Course</button>
+                            <button className={`bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded ${isAvailable ? '' : 'sold-out'} ${isAvailable ? '' : 'opacity-50'}`} disabled={!isAvailable}>
+                                {isAvailable ? 'Get this Course' : 'Sold Out'}
+                            </button>
 
-                            {/* <button className={`btn btn-outline ${users.role === 'admin' ? 'btn-primary' : ''}`}
-                            disabled={users.role === 'admin'}
-                            >Get this Course</button> */}
                         </div>
                     </div>
                 </div>

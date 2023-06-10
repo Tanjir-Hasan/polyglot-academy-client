@@ -1,11 +1,26 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../../providers/ThemeProvider';
+import { useAdmin } from '../../../hooks/useAdmin';
+import { useInstructor } from '../../../hooks/useInstructor';
+import { AuthContext } from '../../../providers/AuthProviders';
 
-const Card = ({ data }) => {
+const Card = ({ data, user }) => {
 
     const { theme } = useContext(ThemeContext);
 
     const { language, image, availableSeats, name } = data;
+    // const isAvailable = availableSeats > 0;
+
+    // const { isAdmin, isAdminLoading } = useAdmin();
+    // const { isInstructor, isInstructorLoading } = useInstructor();
+    // const { user } = useContext(AuthContext);
+
+    const isAvailable = availableSeats > 0;
+    // const isButtonDisabled = !isAvailable || isAdmin || isInstructor || !user;
+
+    // if (isAdminLoading || isInstructorLoading) {
+    //     return <div>Loading...</div>;
+    // }
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
@@ -34,7 +49,13 @@ const Card = ({ data }) => {
                     </div>
                 </div>
                 <div className="grid border-b border-gray-200 mb-12 py-4">
-                    <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded'>Get Course</button>
+
+
+                    <button className={`bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded ${isAvailable ? '' : 'sold-out'} ${isAvailable ? '' : 'opacity-50'}`} disabled={!isAvailable}>
+                        {isAvailable ? 'Get this Course' : 'Sold Out'}
+                    </button>
+
+                    
                 </div>
             </div>
         </div>

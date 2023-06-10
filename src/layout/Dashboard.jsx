@@ -3,9 +3,11 @@ import { Link, Outlet } from 'react-router-dom';
 import { MdManageSearch, MdManageAccounts } from 'react-icons/md';
 import { HiViewGridAdd } from 'react-icons/hi';
 import { FaStickyNote } from 'react-icons/fa';
+import { FcFeedback } from 'react-icons/fc';
 import { GrCheckboxSelected } from 'react-icons/gr';
 import { BsCashCoin } from 'react-icons/bs';
 import { BiSelection } from 'react-icons/bi';
+import { ImHome } from 'react-icons/im';
 import { useAdmin } from '../hooks/useAdmin';
 import { useInstructor } from '../hooks/useInstructor';
 
@@ -65,23 +67,23 @@ const Dashboard = () => {
                         {
                             isAdmin &&
                             <ul className="menu menu-horizontal">
-                                <li><Link to="/dashboard/admin-home">Admin home</Link></li>
-                                <li><Link to="/dashboard/manage-classes">Manage Classes</Link></li>
-                                <li><Link to="/dashboard/all-users">All Users</Link></li>
+                                <li><Link to="/dashboard/admin-home"><ImHome size={'1.5rem'} /> Admin home</Link></li>
+                                <li><Link to="/dashboard/manage-classes"><MdManageSearch size={'1.5rem'} /> Manage Classes</Link></li>
+                                <li><Link to="/dashboard/all-users"><MdManageAccounts size={'1.5rem'} /> All Users</Link></li>
                             </ul>
                             ||
                             isInstructor &&
                             <ul className="menu menu-horizontal">
-                                <li><Link to="/dashboard/add-class">Instructor Home</Link></li>
-                                <li><Link to="/dashboard/add-class">Add a Class</Link></li>
-                                <li><Link to="/dashboard/my-class">My classes</Link></li>
-                                <li><Link to="/dashboard/admin-feedback">Admin Feedback</Link></li>
+                                <li><Link to="/dashboard/add-class"><ImHome size={'1.5rem'} /> Instructor Home</Link></li>
+                                <li><Link to="/dashboard/add-class"><HiViewGridAdd size={'1.5rem'} /> Add a Class</Link></li>
+                                <li><Link to="/dashboard/my-class"><FaStickyNote size={'1.5rem'} /> My classes</Link></li>
+                                <li><Link to="/dashboard/admin-feedback"><FcFeedback size={'1.5rem'} />Admin Feedback</Link></li>
                             </ul>
                             ||
                             <ul className="menu menu-horizontal">
-                                <li><Link to="/dashboard/my-selected-classes">My Selected Classes</Link></li>
-                                <li><Link to="/dashboard/my-enrolled-classes">My Enrolled Classes</Link></li>
-                                <li><Link to="/dashboard/payment-history">Payment History</Link></li>
+                                <li><Link to="/dashboard/my-selected-classes"><GrCheckboxSelected size={'1.5rem'} /> My Selected Classes</Link></li>
+                                <li><Link to="/dashboard/my-enrolled-classes"><BiSelection size={'1.5rem'} /> My Enrolled Classes</Link></li>
+                                <li><Link to="/dashboard/payment-history"><BsCashCoin size={'1.5rem'} /> Payment History</Link></li>
                             </ul>
                         }
 
@@ -94,19 +96,28 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200">
-
-                    {/* admin */}
-                    <li><Link to="/"><MdManageAccounts size={'1.5rem'} /> Manage Users</Link></li>
-                    <li><Link to="/"><MdManageSearch size={'1.5rem'} /> Manage Classes</Link></li>
-
-                    {/* instructor */}
-                    <li><Link to="/"><HiViewGridAdd size={'1.5rem'} /> Add a Class</Link></li>
-                    <li><Link to="/"><FaStickyNote size={'1.5rem'} /> My classes</Link></li>
-
-                    {/* student */}
-                    <li><Link to="/"><GrCheckboxSelected size={'1.5rem'} /> My Selected Classes</Link></li>
-                    <li><Link to="/"><BiSelection size={'1.5rem'} /> My Enrolled Classes</Link></li>
-                    <li><Link to="/"><BsCashCoin size={'1.5rem'} /> Payment History</Link></li>
+                    {
+                        isAdmin &&
+                        <>
+                            <li><Link to="/dashboard/admin-home"><ImHome size={'1.5rem'} />Admin home</Link></li>
+                            <li><Link to="/dashboard/manage-classes"><MdManageSearch size={'1.5rem'} /> Manage Classes</Link></li>
+                            <li><Link to="/dashboard/all-users"><MdManageAccounts size={'1.5rem'} /> All Users</Link></li>
+                        </>
+                        ||
+                        isInstructor &&
+                        <>
+                            <li><Link to="/dashboard/add-class"><ImHome size={'1.5rem'} /> Instructor Home</Link></li>
+                            <li><Link to="/dashboard/add-class"><HiViewGridAdd size={'1.5rem'} /> Add a Class</Link></li>
+                            <li><Link to="/dashboard/my-class"><FaStickyNote size={'1.5rem'} /> My classes</Link></li>
+                            <li><Link to="/dashboard/admin-feedback"><FcFeedback size={'1.5rem'} />Admin Feedback</Link></li>
+                        </>
+                        ||
+                        <>
+                            <li><Link to="/dashboard/my-selected-classes"><GrCheckboxSelected size={'1.5rem'} /> My Selected Classes</Link></li>
+                            <li><Link to="/dashboard/my-enrolled-classes"><BiSelection size={'1.5rem'} /> My Enrolled Classes</Link></li>
+                            <li><Link to="/dashboard/payment-history"><BsCashCoin size={'1.5rem'} /> Payment History</Link></li>
+                        </>
+                    }
 
                 </ul>
 
