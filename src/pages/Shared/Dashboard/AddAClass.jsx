@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../providers/AuthProviders';
 
 const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddAClass = () => {
 
     const { register, handleSubmit, reset } = useForm();
+
+    const { user } = useContext(AuthContext);
 
     const [axiosSecure] = useAxiosSecure();
 
@@ -26,22 +29,20 @@ const AddAClass = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url;
-                    const { instructor_name, instructor_picture, language, picture, availableSeats, } = data;
-                    // TODO: instructor api and ui
-                    const newClass = {
-                        instructor_name, price: parseFloat(price), category,
-                        recipe, image: imgURL
+                    const { name, email, language, price, availableSeats } = data;
+                    const newItem = {
+                        email, name, image: imgURL, language, price: parseFloat(price), availableSeats: parseFloat(availableSeats)
                     }
-                    console.log(newClass)
-                    axiosSecure.post('/allData', newClass)
+                    console.log(newItem)
+                    axiosSecure.post('/classes', newItem)
                         .then(data => {
-                            console.log('updated item', data.data);
+                            console.log('Updated Class', data.data);
                             if (data.data.insertedId) {
                                 reset();
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
-                                    title: 'Class Added Successfully',
+                                    title: 'Class added successfully',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
@@ -52,43 +53,72 @@ const AddAClass = () => {
     }
 
     console.log(image_hosting_token)
-   
+
     return (
-        <div>
-            <h2>Add a class</h2>
-            <div className="w-full px-10 mb-10">
+        <div className="w-1/2 mx-auto px-10 mb-10">
+            <h1 className='py-16 text-5xl text-center font-[Pacifico]'>Add A Class</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
+
+                {/* email and name */}
                 <div className="form-control w-full mb-4">
+                    <label className="label">
+                        <span className="label-text font-semibold">Name</span>
+                    </label>
+                    <input type="name" placeholder={user?.displayName} readOnly defaultValue={user?.displayName}
+                        {...register("name",)}
+                        className="input input-bordered w-full hover:bg-[#ef476f] font-semibold hover:text-black hover:placeholder:text-black" />
+                </div>
+                <div className="form-control w-full mb-4">
+                    <label className="label">
+                        <span className="label-text font-semibold">Email</span>
+                    </label>
+                    <input type="email" placeholder={user?.email} readOnly defaultValue={user?.email}
+                        {...register("email",)}
+                        className="input input-bordered w-full hover:bg-[#ef476f] font-semibold hover:text-black hover:placeholder:text-black" />
+                </div>
+
+                {/* email and name */}
+
+                <div className=" w-full mb-4">
                     <label className="label">
                         <span className="label-text font-semibold">Class Name*</span>
                     </label>
-                    <input type="text" placeholder="Recipe Name"
-                        {...register("name", { required: true, maxLength: 120 })}
-                        className="input input-bordered w-full " />
+                    <input type="text" placeholder="Class Name"
+                        {...register("language", { required: true, maxLength: 120 })}
+                        className="input input-bordered w-full hover:bg-[#ef476f] font-semibold hover:text-black hover:placeholder:text-black" />
                 </div>
-                <div className="flex my-4">
-                    <div className="form-control w-full ml-4">
-                        <label className="label">
-                            <span className="label-text font-semibold">Price*</span>
-                        </label>
-                        <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full " />
+                <div className="flex gap-5">
+                    <div className='w-full'>
+                        <div className="form-control w-full">
+                            <label className="label">
+                                <span className="label-text font-semibold">Price*</span>
+                            </label>
+                            <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full hover:bg-[#ef476f] font-semibold hover:text-black hover:placeholder:text-black" />
+                        </div>
+                    </div>
+                    <div className='w-full'>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-semibold">Available Seats</span>
+                            </label>
+                            <input type="number" {...register("availableSeats", { required: true })} placeholder="Type here" className="input input-bordered w-full hover:bg-[#ef476f] font-semibold hover:text-black hover:placeholder:text-black" />
+                        </div>
                     </div>
                 </div>
                 {/* <div className="form-control">
                     <label className="label">
                         <span className="label-text">Class Details</span>
                     </label>
-                    <textarea {...register("recipe", { required: true })} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                    <textarea {...register("details", { required: true })} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
                 </div> */}
                 <div className="form-control w-full my-4">
                     <label className="label">
-                        <span className="label-text">Image*</span>
+                        <span className="label-text">Class Image*</span>
                     </label>
                     <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full " />
                 </div>
-                <input className="btn btn-sm mt-4" type="submit" value="Add Class" />
+                <input className="w-full bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded" type="submit" value="Add Class" />
             </form>
-        </div>
         </div>
     );
 };

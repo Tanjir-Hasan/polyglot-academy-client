@@ -18,11 +18,14 @@ import PaymentHistory from "../pages/Shared/Dashboard/PaymentHistory";
 import AdminHome from "../pages/Dashboard/AdminHome";
 import Classes from "../pages/Shared/Classes/Classes";
 import Instructors from "../pages/Shared/Instructors/Instructors";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
+import AdminFeedback from "../pages/Shared/Dashboard/AdminFeedback";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -72,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path: "my-class",
                 element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
+            },
+            {
+                path: "admin-feedback",
+                element: <InstructorRoute><AdminFeedback></AdminFeedback></InstructorRoute>
             },
             // student routes
             {

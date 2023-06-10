@@ -75,6 +75,7 @@ const Dashboard = () => {
                                 <li><Link to="/dashboard/add-class">Instructor Home</Link></li>
                                 <li><Link to="/dashboard/add-class">Add a Class</Link></li>
                                 <li><Link to="/dashboard/my-class">My classes</Link></li>
+                                <li><Link to="/dashboard/admin-feedback">Admin Feedback</Link></li>
                             </ul>
                             ||
                             <ul className="menu menu-horizontal">

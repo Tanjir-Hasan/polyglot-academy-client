@@ -5,12 +5,12 @@ const Card = ({ data }) => {
 
     const { theme } = useContext(ThemeContext);
 
-    const { language, picture, availableSeats, instructor_name } = data;
+    const { language, image, availableSeats, name } = data;
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
             <div>
-                <img className="lg:rounded-2xl object-cover overflow-hidden" src={picture} />
+                <img className="lg:rounded-2xl object-cover overflow-hidden" src={image} />
             </div>
             <div className="lg:-translate-y-6 transform lg:ml-32 lg:-mr-5 p-10 shadow-xl hover:shadow-2xl  rounded-bl-2xl border-b-8 border-[#ef476f] overflow-hidden">
                 <div className="space-y-4">
@@ -22,16 +22,19 @@ const Card = ({ data }) => {
                         Instructor Name
                     </p>
                     <p className="text-2xl font-bold text-[#ef476f]">
-                        {instructor_name}
+                        {name}
                     </p>
                 </div>
-                <div className="grid border-t border-b border-gray-200 my-12 py-4">
-                    <p className="text-xl font-bold ">
-                        Available Seats
-                    </p>
-                    <p className="text-2xl font-bold text-[#ef476f]">
-                        {availableSeats}
-                    </p>
+                <div className="grid border-t border-b border-gray-200 mt-6 py-4">
+                    <div className="flex justify-between">
+                        <p className='text-xl font-bold'>Available Seats</p>
+                        <p className="text-2xl font-bold text-[#ef476f]">
+                            {availableSeats}
+                        </p>
+                    </div>
+                </div>
+                <div className="grid border-b border-gray-200 mb-12 py-4">
+                    <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded'>Get Course</button>
                 </div>
             </div>
         </div>

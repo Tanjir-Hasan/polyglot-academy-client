@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { BsFillMoonFill, BsSun } from 'react-icons/bs';
 import { ThemeContext } from '../../../providers/ThemeProvider';
+import { useAdmin } from '../../../hooks/useAdmin';
+import { useInstructor } from '../../../hooks/useInstructor';
 
 const Navbar = () => {
 
     const { theme, toggleTheme } = useContext(ThemeContext);
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const handleThemeToggle = () => {
         toggleTheme();
@@ -31,12 +36,6 @@ const Navbar = () => {
                     <button onClick={handleThemeToggle}>
                         {theme === 'light' ? <BsFillMoonFill className='animate-bounce hover:animate-none' size={"1.5rem"} /> : <BsSun className='animate-spin hover:animate-none text-[#ffbe0b]' size={"2rem"} />}
                     </button>
-                    {/* <button onClick={handleThemeToggle}>
-                        {theme === 'light' ? <img src="https://i.ibb.co/Z2V6thq/n8vi-W0-X2-OYKw-1.gif" alt="" className='rounded-full' /> : <img src="https://i.ibb.co/W3BHx1F/ah6gf-FBf-IBK4.gif" alt="" className='rounded-full' />}
-                    </button> */}
-                    
-                    
-                    
 
                     <div
                         className="flex flex-1 items-center justify-between gap-8 sm:justify-end"
@@ -46,13 +45,25 @@ const Navbar = () => {
                             <Link>
                                 <button className='hidden md:block'>Home</button>
                             </Link>
+
+                            {/* {
+                                isAdmin || isInstructor &&
+                                <>
+                                    <Link to="/instructors">
+                                        <button>Instructors</button>
+                                    </Link>
+                                    <Link to="/classes">
+                                        <button>Classes</button>
+                                    </Link>
+                                </>
+                            } */}
+
                             <Link to="/instructors">
                                 <button>Instructors</button>
                             </Link>
                             <Link to="/classes">
                                 <button>Classes</button>
                             </Link>
-
                             {
                                 user &&
                                 <Link to="/dashboard">

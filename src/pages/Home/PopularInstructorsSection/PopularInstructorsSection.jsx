@@ -12,7 +12,7 @@ const PopularInstructorsSection = () => {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allData')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => setAllData(data))
     }, []);
@@ -29,7 +29,7 @@ const PopularInstructorsSection = () => {
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
-            <h1 className='text-5xl text-center font-[Pacifico] uppercase'>Top Instructor</h1>
+            <h1 className='text-5xl text-center font-[Pacifico] uppercase pt-14'>Top Instructor</h1>
 
             <div className='md:w-10/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-16  py-14'>
 
@@ -39,10 +39,10 @@ const PopularInstructorsSection = () => {
 
             <div className='flex justify-center pb-10'>
                 {!showAll && (
-                    <button className='btn btn-outline' onClick={handleShowMore}>Show More</button>
+                    <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded' onClick={handleShowMore}>Show More</button>
                 )}
                 {showAll && (
-                    <button className='btn btn-outline' onClick={handleShowLess}>Show Less</button>
+                    <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded' onClick={handleShowLess}>Show Less</button>
                 )}
             </div>
 

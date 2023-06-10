@@ -61,7 +61,7 @@ const AllUsers = () => {
 
     return (
         <div>
-            <h2 className='my-5 text-2xl font-[Pacifico] text-center'>Total Users: 0{users.length}</h2>
+            <h2 className='py-12 text-5xl font-[Pacifico] text-center'>Total Users: 0{users.length}</h2>
 
             <div>
                 <div className="overflow-x-auto">
@@ -91,18 +91,18 @@ const AllUsers = () => {
                             {
                                 users.map((user, index) =>
                                     <tr className='' key={user._id}>
-                                        <th className='text-xl font-normal text-center py-2'>{index + 1}</th>
-                                        <td className='text-xl text-center'>
+                                        <th className=' font-normal text-center py-2'>{index + 1}</th>
+                                        <td className=' text-center'>
                                             <div className='flex flex-col'>
                                                 {user.name}
                                                 <span className='text-sm font-thin lg:hidden sm:block'>{user.email}</span>
                                             </div>
                                         </td>
-                                        <td className='text-xl font-thin text-center hidden sm:block'>{user.email}</td>
+                                        <td className='font-thin text-center hidden sm:block'>{user.email}</td>
 
                                         {/* admin */}
 
-                                        <td className='text-xl text-center'>
+                                        <td className='text-center'>
                                             {
                                                 user.role === 'admin' ?
                                                     'Admin'
@@ -110,7 +110,7 @@ const AllUsers = () => {
                                                     <button
                                                         onClick={() => handleMakeAdmin(user)}
                                                         disabled={user.role === 'instructor' || buttonDisabled}
-                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 ${user.role === 'instructor' || buttonDisabled ? 'opacity-60' : ''}`}
+                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-[#ef476f] focus:outline-none focus:ring active:text-[#ef476f] ${user.role === 'instructor' || buttonDisabled ? 'opacity-60' : ''}`}
                                                         href="/download"
                                                     >
                                                         <span className="absolute -end-full transition-all group-hover:end-4">
@@ -139,7 +139,7 @@ const AllUsers = () => {
 
                                         {/* instructor */}
 
-                                        <td className='text-xl text-center'>
+                                        <td className='text-center'>
                                             {
                                                 user.role === 'instructor' ?
                                                     'Instructor'
@@ -147,7 +147,7 @@ const AllUsers = () => {
                                                     <button
                                                         onClick={() => handleMakeInstructor(user)}
                                                         disabled={user.role === 'admin' || buttonDisabled}
-                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 ${user.role === 'admin' || buttonDisabled ? 'opacity-60' : ''}`}
+                                                        className={`group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-1 text-[#ef476f] focus:outline-none focus:ring active:text-[#ef476f] ${user.role === 'admin' || buttonDisabled ? 'opacity-60' : ''}`}
                                                     >
                                                         <span className="absolute -end-full transition-all group-hover:end-4">
                                                             <svg

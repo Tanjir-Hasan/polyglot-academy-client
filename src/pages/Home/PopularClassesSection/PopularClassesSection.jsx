@@ -12,11 +12,12 @@ const PopularClassesSection = () => {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allData')
+        fetch('http://localhost:5000/classes')
             .then(res => res.json())
-            .then(data => setAllData(data))
-    }, []);
+            .then(data => { setAllData(data) })
 
+    }, []);
+    
     const handleShowMore = () => {
         setShowAll(true);
         setDisplayCount(allData.length);
@@ -43,10 +44,10 @@ const PopularClassesSection = () => {
 
                 <div className='flex justify-center pb-10'>
                     {!showAll && (
-                        <button className='btn btn-outline' onClick={handleShowMore}>Show More</button>
+                        <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded' onClick={handleShowMore}>Show More</button>
                     )}
                     {showAll && (
-                        <button className='btn btn-outline' onClick={handleShowLess}>Show Less</button>
+                        <button className='bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded' onClick={handleShowLess}>Show Less</button>
                     )}
                 </div>
 

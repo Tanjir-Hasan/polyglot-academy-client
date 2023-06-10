@@ -9,15 +9,15 @@ const Classes = () => {
     const { theme } = useContext(ThemeContext);
     const [allData, setAllData] = useState([]);
 
-    const [axiosSecure] = useAxiosSecure();
+    // const [axiosSecure] = useAxiosSecure();
 
-    const { data: users = [] } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('users')
-        return res.data;
-    });
+    // const { data: users = [] } = useQuery(['users'], async () => {
+    //     const res = await axiosSecure.get('/users')
+    //     return res.data;
+    // });
 
     useEffect(() => {
-        fetch('http://localhost:5000/allData')
+        fetch('http://localhost:5000/classes')
             .then(res => res.json())
             .then(data => setAllData(data))
     }, []);
@@ -25,7 +25,7 @@ const Classes = () => {
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
             {
-                allData.map(data => <ClassCard key={data._id} users={users} data={data}></ClassCard>)
+                allData.map(data => <ClassCard key={data._id}  data={data}></ClassCard>)
             }
         </div>
     );

@@ -8,7 +8,7 @@ const Instructors = () => {
     const [allData, setAllData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allData')
+        fetch('http://localhost:5000/instructors')
             .then(res => res.json())
             .then(data => setAllData(data))
     }, []);
