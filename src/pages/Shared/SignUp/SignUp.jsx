@@ -65,19 +65,10 @@ const SignUp = () => {
                     .catch(error => console.log(error));
             })
             .catch(error => console.log(error));
-
-        // setErrorSign('');
-        // navigate(from, { replace: true });
-
-        // .catch(error => {
-        //     console.log(error.message);
-        //     setErrorSign(error.message);
-        // })
-
     };
 
     return (
-        <div className='flex items-center justify-center gap-10 mx-auto'>
+        <div className='flex items-center justify-center gap-10 mx-auto py-10'>
             <div className='w-1/2'>
                 <h3 className='text-4xl text-center font-semibold mb-4'>Register</h3>
                 {errorSign && <p className='text-center font-bold text-red-600'>{errorSign}</p>}
@@ -144,8 +135,8 @@ const SignUp = () => {
 
                         </div>
 
-                        <div className=" mt-6">
-                            <input disabled={false} className="px-4 py-3 rounded-full bg-gray-300 text-black focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" type="submit" value="Create an account" />
+                        <div className=" mx-auto mt-6">
+                            <input disabled={false} className="bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border-4 border-[#ef476f] hover:border-transparent rounded w-full" type="submit" value="Create an account" />
                         </div>
                     </form>
 
@@ -153,7 +144,7 @@ const SignUp = () => {
 
                 <div className='text-center my-5'>
                     <span className='font-thin'>Already have an account?</span>
-                    <Link to="/login" className='font-bold ml-2'>Login</Link>
+                    <Link to="/login" className='font-bold ml-2 text-[#ef476f] hover:text-[#e22e58]'>Login</Link>
                 </div>
 
                 <div

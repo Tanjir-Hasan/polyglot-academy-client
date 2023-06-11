@@ -3,15 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 import { BsFillMoonFill, BsSun } from 'react-icons/bs';
 import { ThemeContext } from '../../../providers/ThemeProvider';
-import { useAdmin } from '../../../hooks/useAdmin';
-import { useInstructor } from '../../../hooks/useInstructor';
 
 const Navbar = () => {
 
     const { theme, toggleTheme } = useContext(ThemeContext);
-
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor();
 
     const handleThemeToggle = () => {
         toggleTheme();

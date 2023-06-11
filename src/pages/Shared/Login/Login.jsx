@@ -12,7 +12,7 @@ const Login = () => {
 
     const [show, setShow] = useState(false);
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const { signUser } = useContext(AuthContext);
 
@@ -91,7 +91,7 @@ const Login = () => {
 
 
                         <div className=" mt-6">
-                            <input disabled={false} className="px-4 py-3 rounded-full bg-gray-300 text-black focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" type="submit" value="Login" />
+                            <input disabled={false} className="bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border-4 border-[#ef476f] hover:border-transparent rounded w-full" type="submit" value="Login" />
                         </div>
                     </form>
 
@@ -99,7 +99,7 @@ const Login = () => {
 
                 <div className='text-center my-5'>
                     <span className='font-thin'>Don't have an account?</span>
-                    <Link to="/sign-up" className='font-bold ml-2'>Register</Link>
+                    <Link to="/sign-up" className='font-bold ml-2 text-[#ef476f] hover:text-[#e22e58]'>Register</Link>
                 </div>
 
                 <div

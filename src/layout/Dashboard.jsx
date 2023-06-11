@@ -29,40 +29,10 @@ const Dashboard = () => {
                         </label>
                     </div>
                     <div className="flex-1 px-2 mx-2">
-                        <Link to="/">Home</Link>
+                        <Link to="/" className='font-[Pacifico] text-xl'>Polyglot Academy</Link>
                     </div>
+
                     <div className="flex-none hidden lg:block">
-
-                        {/* admin */}
-
-                        {/* {
-                            isAdmin ?
-                                // admin
-                                <ul className="menu menu-horizontal">
-                                    <li><Link to="/">Manage Users</Link></li>
-                                    <li><Link to="/">Manage Classes</Link></li>
-                                    <li><Link to="/dashboard/all-users">All Users</Link></li>
-                                </ul>
-                                :
-                                // instructor
-                                <ul className="menu menu-horizontal">
-                                    <li><Link to="/add-class">Add a Class</Link></li>
-                                    <li><Link to="/my-class">My classes</Link></li>
-                                </ul>
-                        } */}
-
-                        {/* instructor */}
-                        {/* <ul className="menu menu-horizontal">
-                            <li><Link to="/">Add a Class</Link></li>
-                            <li><Link to="/">My classes</Link></li>
-                        </ul> */}
-
-                        {/* student */}
-                        {/* <ul className="menu menu-horizontal">
-                            <li><Link to="/">My Selected Classes</Link></li>
-                            <li><Link to="/">My Enrolled Classes</Link></li>
-                            <li><Link to="/">Payment History</Link></li>
-                        </ul> */}
 
                         {
                             isAdmin &&
@@ -77,7 +47,6 @@ const Dashboard = () => {
                                 <li><Link to="/dashboard/add-class"><ImHome size={'1.5rem'} /> Instructor Home</Link></li>
                                 <li><Link to="/dashboard/add-class"><HiViewGridAdd size={'1.5rem'} /> Add a Class</Link></li>
                                 <li><Link to="/dashboard/my-class"><FaStickyNote size={'1.5rem'} /> My classes</Link></li>
-                                <li><Link to="/dashboard/admin-feedback"><FcFeedback size={'1.5rem'} />Admin Feedback</Link></li>
                             </ul>
                             ||
                             <ul className="menu menu-horizontal">
@@ -88,18 +57,18 @@ const Dashboard = () => {
                         }
 
                     </div>
+
                 </div>
-                {/* Page content here */}
-                <h1></h1>
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+
                 <ul className="menu p-4 w-80 h-full bg-base-200">
                     {
                         isAdmin &&
                         <>
-                            <li><Link to="/dashboard/admin-home"><ImHome size={'1.5rem'} />Admin home</Link></li>
+                            <li><Link to="/dashboard/admin-home"><ImHome size={'1.5rem'} /> Admin home</Link></li>
                             <li><Link to="/dashboard/manage-classes"><MdManageSearch size={'1.5rem'} /> Manage Classes</Link></li>
                             <li><Link to="/dashboard/all-users"><MdManageAccounts size={'1.5rem'} /> All Users</Link></li>
                         </>
@@ -109,7 +78,6 @@ const Dashboard = () => {
                             <li><Link to="/dashboard/add-class"><ImHome size={'1.5rem'} /> Instructor Home</Link></li>
                             <li><Link to="/dashboard/add-class"><HiViewGridAdd size={'1.5rem'} /> Add a Class</Link></li>
                             <li><Link to="/dashboard/my-class"><FaStickyNote size={'1.5rem'} /> My classes</Link></li>
-                            <li><Link to="/dashboard/admin-feedback"><FcFeedback size={'1.5rem'} />Admin Feedback</Link></li>
                         </>
                         ||
                         <>

@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../../../providers/ThemeProvider';
-import { useAdmin } from '../../../hooks/useAdmin';
-import { useInstructor } from '../../../hooks/useInstructor';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 const Card = ({ data, user }) => {

@@ -6,10 +6,8 @@ import Login from "../pages/Shared/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import AllUsers from "../pages/Shared/Dashboard/AllUsers";
 import PrivateRoutes from "./PrivateRoutes";
-import AdminRoute from "./AdminRoute";
 import MyClasses from "../pages/Shared/Dashboard/MyClasses";
 import AddAClass from "../pages/Shared/Dashboard/AddAClass";
-import InstructorRoute from "./InstructorRoute";
 import ManageClasses from "../pages/Shared/Dashboard/ManageClasses";
 import MyClass from "../pages/Shared/Dashboard/MyClass";
 import MySelectedClasses from "../pages/Shared/Dashboard/MySelectedClasses";
@@ -20,6 +18,8 @@ import Classes from "../pages/Shared/Classes/Classes";
 import Instructors from "../pages/Shared/Instructors/Instructors";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 import AdminFeedback from "../pages/Shared/Dashboard/AdminFeedback";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
     {
@@ -55,9 +55,12 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             // admin routes
+
             {
                 path: "admin-home",
-                element: <AdminRoute><AdminHome></AdminHome> </AdminRoute>
+                // element: <AdminRoute><AdminHome></AdminHome> </AdminRoute>
+                // element: <AdminHome></AdminHome>
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
                 path: "all-users",
@@ -67,19 +70,23 @@ const router = createBrowserRouter([
                 path: "manage-classes",
                 element: <AdminRoute><ManageClasses></ManageClasses> </AdminRoute>
             },
+
             // instructor routes
+
             {
                 path: "add-class",
                 element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
             },
+
             {
                 path: "my-class",
                 element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
             },
-            {
-                path: "admin-feedback",
-                element: <InstructorRoute><AdminFeedback></AdminFeedback></InstructorRoute>
-            },
+
+            // {
+            //     path: "admin-feedback",
+            //     element: <InstructorRoute><AdminFeedback></AdminFeedback></InstructorRoute>
+            // },
             // student routes
             {
                 path: "my-selected-classes",

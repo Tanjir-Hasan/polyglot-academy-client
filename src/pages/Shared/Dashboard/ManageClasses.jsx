@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from 'sweetalert2';
 
 const ManageClasses = () => {
 
@@ -10,6 +11,12 @@ const ManageClasses = () => {
     const [feedbackInput, setFeedbackInput] = useState('');
 
     const [selectedClassId, setSelectedClassId] = useState('');
+
+
+    // const { data: users = [], refetch } = useQuery(['users'], async () => {
+    //     const res = await axiosSecure.get('users')
+    //     return res.data;
+    // });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +31,7 @@ const ManageClasses = () => {
         fetchData();
     }, []);
 
+
     const handleApprove = async (classId) => {
         try {
             await axiosSecure.patch(`/classes/approve/${classId}`);
@@ -31,6 +39,27 @@ const ManageClasses = () => {
         } catch (error) {
             console.log('Error approving class:', error);
         }
+
+        // fetch(`http://localhost:5000/classes/approve/${classId}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //         const { status } = data; // Extract the "status" property from the response data
+        //         if (status === 'approved') {
+        //             Swal.fire(
+        //                 'Approved!',
+        //                 'The class has been approved.',
+        //                 'success'
+        //             ).then(() => {
+        //                 setClasses((prevClasses) => prevClasses.filter((classItem) => classItem._id !== classId));
+        //             });
+        //         }
+        //     })
     };
 
 
@@ -137,48 +166,6 @@ const ManageClasses = () => {
                     }
                 </tbody>
             </table>
-
-
-            {/* {
-                classes.map((classItem) => (
-                    <div className="flex" key={classItem._id}>
-                        <h2>{classItem.language}</h2>
-                        <p>{classItem.status}</p>
-
-                        <button className={`bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded ${classItem.status === 'approved' || classItem.status === 'denied' && "opacity-50"}`}
-                            onClick={() => handleApprove(classItem._id)}
-                            disabled={classItem.status === 'approved' || classItem.status === 'denied'}
-                        >
-                            Approve
-                        </button>
-
-
-                        <button className={`bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded ${classItem.status === 'approved' || classItem.status === 'denied' && "opacity-50"}`}
-                            onClick={() => handleDeny(classItem._id)}
-                            disabled={classItem.status === 'approved' || classItem.status === 'denied'}
-                        >
-                            Deny
-                        </button>
-
-                        
-
-                        {
-                            classItem.status === 'denied' && (
-                                <button
-                                    className="bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent rounded"
-                                    onClick={() => {
-                                        setSelectedClassId(classItem._id);
-                                        window.my_modal_1.showModal();
-                                    }}
-                                >
-                                    Feedback
-                                </button>
-                            )
-                        }
-
-                    </div>
-                ))
-            } */}
 
             {/* Open the modal using ID.showModal() method */}
 

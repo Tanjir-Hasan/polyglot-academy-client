@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext } from "react"
 import { AuthContext } from "../providers/AuthProviders";
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 export const useAdmin = () => {
+
     const { user, loading } = useContext(AuthContext);
+
     const [axiosSecure] = useAxiosSecure();
+
     const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
         queryKey: ['isAdmin', user?.email],
         enabled: !loading,
