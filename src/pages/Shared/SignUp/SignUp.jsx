@@ -23,7 +23,7 @@ const SignUp = () => {
 
     const onSubmit = data => {
 
-        console.log(data)
+        // console.log(data)
 
         if (data.password !== data.confirm) {
             setErrorSign('Passwords do not match');
