@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from 'sweetalert2';
-import { toast } from "react-toastify";
 
 const ManageClasses = () => {
 

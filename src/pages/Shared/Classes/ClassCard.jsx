@@ -25,7 +25,7 @@ const ClassCard = ({ data }) => {
     const isButtonDisabled = !isAvailable || isAdmin || isInstructor || !user;
 
     const handleAddToCard = item => {
-        console.log(item)
+        // console.log(item)
         if (user && user?.email) {
             const cartItem = { language, image, name, price, email: user?.email }
             fetch('https://summer-camp-server-rouge.vercel.app/carts', {

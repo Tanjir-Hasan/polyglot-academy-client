@@ -11,7 +11,7 @@ const ErrorPage = () => {
             <p className='text-xl mb-4 text-center'>{error.message}</p>
             <Link to='/'>
                 <button className='flex items-center text-xl bg-[#ef476f] text-white border-none  gap-3 mx-auto p-3 rounded-lg  
-                bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent 
+                 hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border border-[#ef476f] hover:border-transparent 
                 '>
                     Back to Home
                     <FaHome className="h-6 w-6 text-white" />

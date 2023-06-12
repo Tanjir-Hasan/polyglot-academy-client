@@ -25,10 +25,10 @@ const Card = ({ data }) => {
     const [isInstructor] = useInstructor();
 
     const isAvailable = availableSeats > 0;
-    const isButtonDisabled = !isAvailable || isAdmin || isInstructor || !user;
+    const isButtonDisabled = !isAvailable || isAdmin || isInstructor;
 
     const handleAddToCard = item => {
-        console.log(item)
+        console.log(user)
         if (user && user?.email) {
             const cartItem = { language, image, name, price, email: user?.email }
             fetch('https://summer-camp-server-rouge.vercel.app/carts', {
@@ -68,53 +68,6 @@ const Card = ({ data }) => {
             })
         }
     };
-
-
-
-    // const handleAddToCard = item => {
-    //     if (user && user.email) {
-    //         // User is logged in, add the course to the cart
-    //         const cartItem = { language, image, name, price, email: user.email };
-    //         fetch('https://summer-camp-server-rouge.vercel.app/carts', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'content-type': 'application/json'
-    //             },
-    //             body: JSON.stringify(cartItem)
-    //         })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.insertedId) {
-    //                 refetch();
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: 'Class Added',
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
-    //             }
-    //         });
-    //     } else {
-    //         // User is not logged in, redirect to the login page
-    //         Swal.fire({
-    //             title: 'Please login first',
-    //             icon: 'warning',
-    //             showCancelButton: true,
-    //             confirmButtonColor: '#3085d6',
-    //             cancelButtonColor: '#d33',
-    //             confirmButtonText: 'Login'
-    //         }).then(result => {
-    //             if (result.isConfirmed) {
-    //                 navigate('/login', { state: { from: location } });
-    //             }
-    //         });
-    //     }
-    // };
-    
-
-
 
 
     return (

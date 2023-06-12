@@ -3,8 +3,6 @@ import LessonTypes from "../LessonTypes/LessonTypes";
 import PopularClassesSection from "../PopularClassesSection/PopularClassesSection";
 import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
 
-
-
 const Home = () => {
 
     return (

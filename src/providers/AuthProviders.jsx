@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
     // logout
 
     const logOut = () => {
-        setLoading(true);
+        setLoading(false);
         return signOut(auth);
     };
 
@@ -51,13 +51,14 @@ const AuthProvider = ({ children }) => {
     
             // get and set token
             if (loggedUser) {
-                axios.post('https://summer-camp-server-rouge.vercel.app/jwt', { email: loggedUser.email })
+                axios.post('https://summer-camp-server-rouge.vercel.app/jwt', { email: loggedUser?.email })
                     .then(data => {
-                        localStorage.setItem('access-token', data.data.token)
-                        setLoading(false)
+                        localStorage.setItem('access-token', data.data.token);
+                        setLoading(false);
                     })
             } else { 
-                localStorage.removeItem('access-token')
+                localStorage.removeItem('access-token');
+                setLoading(false);
             }
             // setLoading(false)
         });

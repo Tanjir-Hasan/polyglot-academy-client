@@ -15,7 +15,6 @@ const MyClass = () => {
         const fetchData = async () => {
             try {
                 const response = await axiosSecure.get(`/instructors/${user?.email}`);
-                // const response = await axiosSecure.get('all-classes');
                 setByInsData(response.data);
             } catch (error) {
                 console.log('Error fetching classes:', error);
@@ -52,11 +51,6 @@ const MyClass = () => {
                 </thead>
 
                 <tbody className="divide-y divide-gray-200">
-
-                    {/* <td></td>
-                    <td className='text-center'>{byInsData.language}</td>
-                    <td className='text-center'>{byInsData.status}</td>
-                    <td className='text-center'>{byInsData.feedback}</td> */}
 
                     {
                         byInsData?.map((data, index) =>
