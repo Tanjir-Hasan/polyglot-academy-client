@@ -6,7 +6,6 @@ import Login from "../pages/Shared/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import AllUsers from "../pages/Shared/Dashboard/AllUsers";
 import PrivateRoutes from "./PrivateRoutes";
-import MyClasses from "../pages/Shared/Dashboard/MyClasses";
 import AddAClass from "../pages/Shared/Dashboard/AddAClass";
 import ManageClasses from "../pages/Shared/Dashboard/ManageClasses";
 import MyClass from "../pages/Shared/Dashboard/MyClass";
@@ -17,9 +16,9 @@ import AdminHome from "../pages/Dashboard/AdminHome";
 import Classes from "../pages/Shared/Classes/Classes";
 import Instructors from "../pages/Shared/Instructors/Instructors";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
-import AdminFeedback from "../pages/Shared/Dashboard/AdminFeedback";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Payment from "../pages/Shared/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -40,12 +39,11 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             },
             {
-                path: "classes",
-                // element: <Classes></Classes>
+                path: "all-of-classes",
                 element: <PrivateRoutes><Classes></Classes></PrivateRoutes>
             },
             {
-                path: "instructors",
+                path: "all-instructors",
                 element: <PrivateRoutes><Instructors></Instructors></PrivateRoutes>
             }
         ]
@@ -99,6 +97,12 @@ const router = createBrowserRouter([
             {
                 path: "payment-history",
                 element: <PaymentHistory></PaymentHistory>
+            },
+            {
+                // path: "payment/:id",
+                path: "payment",
+                element: <Payment></Payment>,
+                // loader: ({ params }) => fetch(`https://summer-camp-server-rouge.vercel.app/carts/${params.id}`)
             },
         ]
     }

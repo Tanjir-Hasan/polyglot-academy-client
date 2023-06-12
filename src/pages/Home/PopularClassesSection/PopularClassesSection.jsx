@@ -16,7 +16,7 @@ const PopularClassesSection = () => {
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://summer-camp-server-rouge.vercel.app/classes')
             .then(res => res.json())
             .then(data => { setAllData(data) })
 

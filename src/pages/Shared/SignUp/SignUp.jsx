@@ -39,8 +39,8 @@ const SignUp = () => {
             })
             .then(() => {
                 // save the user in the database
-                const savedUser = { name: data.name, email: data.email }
-                fetch('http://localhost:5000/users', {
+                const savedUser = { name: data.name, email: data.email, image: data.photoURL }
+                fetch('https://summer-camp-server-rouge.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

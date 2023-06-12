@@ -41,22 +41,10 @@ const Navbar = () => {
                                 <button className='hidden md:block'>Home</button>
                             </Link>
 
-                            {/* {
-                                isAdmin || isInstructor &&
-                                <>
-                                    <Link to="/instructors">
-                                        <button>Instructors</button>
-                                    </Link>
-                                    <Link to="/classes">
-                                        <button>Classes</button>
-                                    </Link>
-                                </>
-                            } */}
-
-                            <Link to="/instructors">
+                            <Link to="/all-instructors">
                                 <button>Instructors</button>
                             </Link>
-                            <Link to="/classes">
+                            <Link to="/all-of-classes">
                                 <button>Classes</button>
                             </Link>
                             {

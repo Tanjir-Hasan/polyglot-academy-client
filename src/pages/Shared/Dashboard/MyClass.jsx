@@ -14,8 +14,8 @@ const MyClass = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const response = await axiosSecure.get(`/instructors/${user?.email}`);
-                const response = await axiosSecure.get('all-classes');
+                const response = await axiosSecure.get(`/instructors/${user?.email}`);
+                // const response = await axiosSecure.get('all-classes');
                 setByInsData(response.data);
             } catch (error) {
                 console.log('Error fetching classes:', error);

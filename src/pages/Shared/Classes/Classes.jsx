@@ -9,15 +9,8 @@ const Classes = () => {
     const { theme } = useContext(ThemeContext);
     const [allData, setAllData] = useState([]);
 
-    // const [axiosSecure] = useAxiosSecure();
-
-    // const { data: users = [] } = useQuery(['users'], async () => {
-    //     const res = await axiosSecure.get('/users')
-    //     return res.data;
-    // });
-
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://summer-camp-server-rouge.vercel.app/classes')
             .then(res => res.json())
             .then(data => setAllData(data))
     }, []);

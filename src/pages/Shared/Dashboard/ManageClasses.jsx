@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from 'sweetalert2';
+import { toast } from "react-toastify";
 
 const ManageClasses = () => {
 
@@ -11,12 +12,6 @@ const ManageClasses = () => {
     const [feedbackInput, setFeedbackInput] = useState('');
 
     const [selectedClassId, setSelectedClassId] = useState('');
-
-
-    // const { data: users = [], refetch } = useQuery(['users'], async () => {
-    //     const res = await axiosSecure.get('users')
-    //     return res.data;
-    // });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,31 +30,10 @@ const ManageClasses = () => {
     const handleApprove = async (classId) => {
         try {
             await axiosSecure.patch(`/classes/approve/${classId}`);
-            setClasses((prevClasses) => prevClasses.filter((classItem) => classItem._id !== classId));
+            setClasses(classes);
         } catch (error) {
             console.log('Error approving class:', error);
         }
-
-        // fetch(`http://localhost:5000/classes/approve/${classId}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data)
-        //         const { status } = data; // Extract the "status" property from the response data
-        //         if (status === 'approved') {
-        //             Swal.fire(
-        //                 'Approved!',
-        //                 'The class has been approved.',
-        //                 'success'
-        //             ).then(() => {
-        //                 setClasses((prevClasses) => prevClasses.filter((classItem) => classItem._id !== classId));
-        //             });
-        //         }
-        //     })
     };
 
 
@@ -67,7 +41,7 @@ const ManageClasses = () => {
 
         try {
             await axiosSecure.patch(`/classes/deny/${classId}`);
-            setClasses((prevClasses) => prevClasses.filter((classItem) => classItem._id !== classId));
+            // setClasses((prevClasses) => prevClasses.filter((classItem) => classItem._id !== classId));
         } catch (error) {
             console.log('Error approving class:', error);
         }
@@ -100,6 +74,9 @@ const ManageClasses = () => {
                             #
                         </th>
                         <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                            Image
+                        </th>
+                        <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                             Language Name
                         </th>
                         <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 hidden sm:block">
@@ -121,12 +98,20 @@ const ManageClasses = () => {
                             <tr className='' key={classItem._id}>
                                 <th className='font-normal text-center py-2'>{index + 1}</th>
 
+                                <td>
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={classItem.image} alt="" />
+                                        </div>
+                                    </div>
+                                </td>
+                                
                                 <td className='text-center'>
                                     <h2>{classItem.language}</h2>
                                 </td>
 
                                 <td className="text-center">
-                                    <button className={`mr-3 bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border-b-4 border-[#ef476f] hover:border-transparent rounded ${classItem.status === 'approved' || classItem.status === 'denied' && "opacity-50"}`}
+                                    <button className={`ml-3 bg-transparent hover:bg-[#ef476f] font-semibold hover:text-white py-2 px-4 border-b-4 border-[#ef476f] hover:border-transparent rounded ${classItem.status === 'denied' || classItem.status === 'approved' && "opacity-50"}`}
                                         onClick={() => handleApprove(classItem._id)}
                                         disabled={classItem.status === 'approved' || classItem.status === 'denied'}
                                     >
