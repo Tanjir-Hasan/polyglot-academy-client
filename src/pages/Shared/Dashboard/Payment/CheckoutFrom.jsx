@@ -126,7 +126,7 @@ const CheckoutFrom = ({ price, cart }) => {
                     }}
                 />
                 <div className='my-5'>
-                    <button className='bg-[#ef476f] font-semibold' type="submit" disabled={!stripe || !clientSecret || processing}>
+                    <button className='bg-[#ef476f] font-semibold p-4 text-white' type="submit" disabled={!stripe || !clientSecret || processing}>
                         Pay
                     </button>
                 </div>
