@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.thumbs-wrapper {
-    display: flex;
-    justify-content: center;
-    background-color: #252422;
-    padding: 20px;
-    margin: 0;
+.thumbs-wrapper  {
+    display: none;
 }
 
 
@@ -16,7 +12,7 @@
 }
 
 .dark {
-    background-color: #252422;
+    background-color: #161a1d;
     color: #fff;
 }
 
