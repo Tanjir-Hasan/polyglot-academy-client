@@ -13,7 +13,7 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <div className=''>
+    <div className='object-cover overflow-hidden'>
       <AuthProviders>
         <ThemeProvider>
           <QueryClientProvider client={queryClient}>

@@ -21,6 +21,10 @@
 }
 
 
+.headline {
+    @apply lg:text-5xl text-3xl text-center font-[Pacifico] uppercase lg:py-20 py-10;
+}
+
 /**
 * 161a1d
 * 252422

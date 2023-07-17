@@ -30,15 +30,15 @@ const PopularInstructorsSection = () => {
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
-            <h1 className='text-5xl text-center font-[Pacifico] uppercase pt-14'>Top Instructor</h1>
+            <h1 className='headline'>Top Instructor</h1>
 
-            <div className='md:w-10/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-16  py-14'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-20 w-11/12 mx-auto pb-10'>
 
                 {allData.slice(0, displayCount).map(data => <InsCard key={data._id} data={data}></InsCard>)}
 
             </div>
 
-            <div className='flex justify-center pb-10'>
+            <div className='flex justify-center py-10'>
                 {!showAll && (
                     <motion.button 
                     whileHover={{

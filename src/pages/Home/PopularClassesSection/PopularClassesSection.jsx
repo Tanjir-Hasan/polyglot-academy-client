@@ -36,7 +36,7 @@ const PopularClassesSection = () => {
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
 
             <div className='w-10/12 mx-auto'>
-                <h1 className='text-5xl text-center font-[Pacifico] uppercase py-20'>Popular Choices</h1>
+                <h1 className='headline'>Popular Choices</h1>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-20 pb-10'>
 
@@ -48,7 +48,7 @@ const PopularClassesSection = () => {
 
                 <div
 
-                    className='flex justify-center pb-10'>
+                    className='flex justify-center py-10'>
                     {!showAll && (
                         <motion.button
                             whileHover={{

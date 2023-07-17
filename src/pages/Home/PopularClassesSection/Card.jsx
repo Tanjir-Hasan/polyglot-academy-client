@@ -73,32 +73,32 @@ const Card = ({ data }) => {
     return (
         <div className={`bg-base-100 my-component ${theme === 'dark' ? 'dark' : ''}`}>
             <div className='mx-auto relative rounded-lg hover:scale-105 duration-1000'>
-                <img className="rounded object-cover overflow-hidden scale-95 pt-2" src={image} />
+                <img className="rounded object-cover overflow-hidden lg:scale-95 pt-2" src={image} />
                 <div className='flex flex-col absolute inset-0 text-center justify-center bg-black bg-opacity-75 text-gray-200 rounded-lg px-5 py-7 opacity-0 hover:opacity-100 transition-opacity duration-300'>
-                    <div className="space-y-4">
-                        <h1 className="text-5xl font-bold tracking-tight">
+                    <div className="lg:space-y-4 space-y-1">
+                        <h1 className="lg:text-5xl text-2xl font-bold tracking-tight">
                             {language}
                         </h1>
 
-                        <div className="flex justify-between mt-6 py-4">
-                            <p className="text-xl font-bold ">
+                        <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
+                            <p className="lg:text-xl font-bold ">
                                 Instructor Name
                             </p>
-                            <p className="text-2xl font-bold text-[#ef476f]">
+                            <p className="lg:text-2xl font-bold text-[#ef476f]">
                                 {name}
                             </p>
                         </div>
 
                     </div>
-                    <div className="flex justify-between mt-6 py-4">
-                        <p className='text-xl font-bold'>Available Seats</p>
-                        <p className="text-2xl font-bold text-[#ef476f]">
+                    <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
+                        <p className='lg:text-xl font-bold'>Available Seats</p>
+                        <p className="lg:text-2xl font-bold text-[#ef476f]">
                             {availableSeats}
                         </p>
                     </div>
-                    <div className="flex justify-between mt-6 py-4">
-                        <p className='text-xl font-bold'>Price</p>
-                        <p className="text-2xl font-bold text-[#ef476f]">
+                    <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
+                        <p className='lg:text-xl font-bold'>Price</p>
+                        <p className="lg:text-2xl font-bold text-[#ef476f]">
                             $ {price}
                         </p>
                     </div>
