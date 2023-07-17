@@ -11,6 +11,10 @@
     display: none;
 }
 
+#root {
+    background-color: #edf2f4;
+}
+
 .dark {
     background-color: #161a1d;
     color: #fff;

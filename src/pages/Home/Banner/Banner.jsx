@@ -10,7 +10,7 @@ const Banner = () => {
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
 
-            <Carousel autoPlay>
+            <Carousel autoPlay interval="2000" infiniteLoop>
                 <div>
                     <img src="https://i.ibb.co/rffKGDN/photo-1546410531-bb4caa6b424d.jpg" />
                     <p className="legend font-[Inconsolata]">Indulge your love for learning at our vibrant language school. Discover the magic of acquiring new languages through interactive classes, engaging activities, and personalized guidance. Our dedicated team of educators will ignite your curiosity and fuel your desire to master languages, creating an inspiring and supportive environment for your educational journey.</p>

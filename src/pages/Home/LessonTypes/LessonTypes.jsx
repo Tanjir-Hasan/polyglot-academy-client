@@ -42,7 +42,7 @@ const LessonTypes = () => {
                 </div>
             </div>
 
-            <img src={img10} className='w-8/12 h-[400px] mx-auto' alt="" />
+            <img src={img10} className='lg:w-8/12 w-11/12 h-[400px] mx-auto' alt="" />
 
             <div className='space-y-6'>
                 <h1 className='text-5xl text-center font-[Pacifico] py-5'>5 TYPES OF VIDEO LESSONS</h1>
