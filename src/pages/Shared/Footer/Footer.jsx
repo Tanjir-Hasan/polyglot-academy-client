@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
 
-        <div className={`px-4 py-16 mx-auto sm:px-6 lg:px-8  
+        <div className={`px-4 pt-40 pb-16 mx-auto sm:px-6 lg:px-8  
         my-component ${theme === 'dark' ? 'dark' : 'bg-gradient-to-t from-gray-500 via-white to-white'}
         `}>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">

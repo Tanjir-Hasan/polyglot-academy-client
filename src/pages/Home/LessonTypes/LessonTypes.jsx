@@ -16,7 +16,7 @@ const LessonTypes = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <div className={`pb-16 space-y-10 my-component ${theme === 'dark' ? 'dark' : ''}`}>
+        <div className={`space-y-10 my-component ${theme === 'dark' ? 'dark' : ''}`}>
 
             <div className='space-y-3'>
                 <h1 className='headline'>LESSON TYPES</h1>

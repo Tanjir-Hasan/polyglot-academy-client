@@ -33,7 +33,7 @@ const PopularClassesSection = () => {
     };
 
     return (
-        <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
+        <div className={`${theme === 'dark' ? 'dark' : ''}`}>
 
             <div className='w-10/12 mx-auto'>
                 <h1 className='headline'>Popular Choices</h1>

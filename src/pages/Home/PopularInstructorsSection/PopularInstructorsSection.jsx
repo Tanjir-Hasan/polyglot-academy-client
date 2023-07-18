@@ -9,7 +9,7 @@ const PopularInstructorsSection = () => {
 
     const [allData, setAllData] = useState([]);
 
-    const [displayCount, setDisplayCount] = useState(6);
+    const [displayCount, setDisplayCount] = useState(3);
     const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
@@ -25,14 +25,14 @@ const PopularInstructorsSection = () => {
 
     const handleShowLess = () => {
         setShowAll(false);
-        setDisplayCount(6);
+        setDisplayCount(3);
     };
 
     return (
         <div className={`my-component ${theme === 'dark' ? 'dark' : ''}`}>
             <h1 className='headline'>Top Instructor</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-20 w-11/12 mx-auto pb-10'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-10 w-10/12 mx-auto pb-10'>
 
                 {allData.slice(0, displayCount).map(data => <InsCard key={data._id} data={data}></InsCard>)}
 
