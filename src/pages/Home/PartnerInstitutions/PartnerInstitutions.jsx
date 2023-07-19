@@ -6,10 +6,10 @@ const PartnerInstitutions = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <div className={`${theme === 'dark' ? 'dark' : ''} w-11/12 mx-auto`}>
+        <div className={`${theme === 'dark' ? 'dark' : ''}`}>
             <h2 className='headline'>Partner Institutions</h2>
 
-            <div className='grid grid-cols-2 lg:grid-cols-3 gap-10 lg:pb-20 pb-10'>
+            <div className='grid grid-cols-2 lg:grid-cols-3 gap-10 lg:pb-20 pb-10 w-11/12 mx-auto'>
                 <div className='bg-[#264653] bg-opacity-40 p-5 rounded-xl shadow-xl hover:text-[#edf2f4] hover:bg-[#14213d] duration-700'>
                     <img src="https://i.ibb.co/sPSWFFD/Black-And-White-Modern-Vintage-Retro-Brand-Logo.png" alt="instruction image" className='h-32 rounded-full pb-5' />
                     <h3 className='text-xl font-mono'>University of Language Studies</h3>

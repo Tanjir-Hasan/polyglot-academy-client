@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "name": "Vocabulary Builder",
+        "description": "Expand your vocabulary with word lists, flashcards, and quizzes.",
+        "url": "/vocabulary-builder"
+    },
+    {
+        "id": "2",
+        "name": "Grammar Exercises",
+        "description": "Practice different grammar concepts with interactive exercises.",
+        "url": "/grammar-exercises"
+    },
+    {
+        "id": "3",
+        "name": "Pronunciation Guides",
+        "description": "Improve your pronunciation with audio clips and phonetic transcriptions.",
+        "url": "/pronunciation-guides"
+    },
+    {
+        "id": "4",
+        "name": "Conversation Simulations",
+        "description": "Practice conversations in real-life scenarios with interactive dialogues.",
+        "url": "/conversation-simulations"
+    },
+    {
+        "id": "5",
+        "name": "Writing Prompts",
+        "description": "Enhance your writing skills with interesting prompts and exercises.",
+        "url": "/writing-prompts"
+    },
+    {
+        "id": "6",
+        "name": "Language Quizzes and Games",
+        "description": "Test your language knowledge and have fun with interactive quizzes and games.",
+        "url": "/language-quizzes-games"
+    },
+    {
+        "id": "7",
+        "name": "Cultural Exploration",
+        "description": "Explore the culture of the language you're learning with interactive tools.",
+        "url": "/cultural-exploration"
+    },
+    {
+        "id": "8",
+        "name": "Language Exchange Forums",
+        "description": "Connect with other learners for language exchange through discussion forums and chat rooms.",
+        "url": "/language-exchange-forums"
+    }
+]
