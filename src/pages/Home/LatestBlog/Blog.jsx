@@ -11,11 +11,12 @@ const Blog = ({ item }) => {
                     <h3>{title}</h3>
                     <p>Author: {author}</p>
                     <p>{excerpt}</p>
+                    <p><small>Posted on: {date}</small></p>
                 </div>
                 <img src={image} alt="" className='lg:w-1/3 lg:py-0 py-5' />
             </div>
-            <p>{description}</p>
-            <p><small>Posted on: {date}</small></p>
+            <p className='text-justify'>{description}</p>
+            
         </div>
     );
 };

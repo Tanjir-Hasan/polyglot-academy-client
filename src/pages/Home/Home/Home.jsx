@@ -15,7 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <PopularClassesSection></PopularClassesSection>
             <PopularInstructorsSection></PopularInstructorsSection>
-            <LanguageLearningTips></LanguageLearningTips>
+            {/* <LanguageLearningTips></LanguageLearningTips> */}
             <InteractiveLanguageTools></InteractiveLanguageTools>
             <LessonTypes></LessonTypes>
             <LatestBlog></LatestBlog>

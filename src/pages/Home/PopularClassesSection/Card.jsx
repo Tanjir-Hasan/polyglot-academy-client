@@ -80,27 +80,13 @@ const Card = ({ data }) => {
                             {language}
                         </h1>
 
-                        <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
-                            <p className="lg:text-xl font-bold ">
-                                Instructor Name
-                            </p>
-                            <p className="lg:text-2xl font-bold text-[#ef476f]">
-                                {name}
+                        <div className="lg:mt-6 mt-2 lg:py-4">
+                            <p className="lg:text-xl font-bold text-center">
+                                Instructor Name <span className="lg:text-2xl font-bold text-[#ef476f]">{name}</span>
                             </p>
                         </div>
-
-                    </div>
-                    <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
-                        <p className='lg:text-xl font-bold'>Available Seats</p>
-                        <p className="lg:text-2xl font-bold text-[#ef476f]">
-                            {availableSeats}
-                        </p>
-                    </div>
-                    <div className="flex justify-between lg:mt-6 mt-2 lg:py-4">
-                        <p className='lg:text-xl font-bold'>Price</p>
-                        <p className="lg:text-2xl font-bold text-[#ef476f]">
-                            $ {price}
-                        </p>
+                        <p className='lg:text-xl font-bold'>Available Seats: <span className="lg:text-2xl font-bold text-[#ef476f]">{availableSeats}</span></p>
+                        <p className='lg:text-xl font-bold mt-auto'>Price: <span className="lg:text-2xl font-bold text-[#ef476f]">$ {price}</span></p>
                     </div>
                 </div>
             </div>
